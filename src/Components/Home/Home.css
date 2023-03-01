@@ -9,3 +9,18 @@
   flex-direction: column;
   align-items: center;
 }
+
+.form-error {
+  color: red;
+}
+
+.error-container {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  margin: 10px;
+  width: 48vw;
+  border: 2px solid red;
+  align-items: center;
+  border-radius: 5px;
+}
