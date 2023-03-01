@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Home.css";
 import getRestaurants from "../../APICalls.js"
-import {cleanData } from "../../util"
+import {cleanData, removeDuplicates } from "../../util"
 
 const Home = () => {
 
@@ -37,21 +37,7 @@ let findRestaurants = () => {
 }
 
 let setResultsInState = (results) => {
-  let restaurantLicenses = results.reduce((accum, result) => {
-    if (!accum.includes(result["license_"])) {
-      accum.push(result["license_"]);
-    }
-    return accum
-  }, [])
-
-  let filteredResults = restaurantLicenses.reduce((accum, license) => {
-    let licenseMatch = results.find(
-      (restaurant) => restaurant["license_"] === license
-    );
-    accum.push(licenseMatch);
-    return accum;
-  }, []);
-
+  let filteredResults = removeDuplicates(results)
   setResults(cleanData(filteredResults))
 }
 

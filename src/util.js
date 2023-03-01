@@ -22,3 +22,20 @@ export const reformatDate = (date) => {
   const newDate = new Date(date);
   return `${newDate.getMonth() + 1}/${newDate.getDate()}/${newDate.getFullYear()}`;
 }
+
+export const removeDuplicates = (results) => {
+  let restaurantLicenses = results.reduce((accum, result) => {
+    if (!accum.includes(result["license_"])) {
+      accum.push(result["license_"]);
+    }
+    return accum;
+  }, []);
+
+  return restaurantLicenses.reduce((accum, license) => {
+    let licenseMatch = results.find(
+      (restaurant) => restaurant["license_"] === license
+    );
+    accum.push(licenseMatch);
+    return accum;
+  }, []);
+}
