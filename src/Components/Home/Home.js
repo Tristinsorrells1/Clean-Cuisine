@@ -7,55 +7,58 @@ const Home = () => {
 
   const [zipcode, setZipcode] = useState("")
   const [name, setName] = useState("")
-  const [invalidZip, setInvalidZip] = useState("")
-  const [emptyInputs, setEmptyInputs] = useState("")
+  const [invalidZip, setInvalidZip] = useState(true)
   const [results, setResults] = useState([])
+  const [checkInputs, setCheckInputs] = useState(false)
 
-  let checkInputs = (event) => {
+  let validateInputs = (event) => {
     event.preventDefault();
     let zipCheck = /^\d{5}$/.test(zipcode)
-    if (zipcode && !zipCheck) {
+    if (!zipCheck) {
       setInvalidZip(true)
     }
-    else if (!zipcode || zipCheck) {
+    else if (zipCheck) {
       setInvalidZip(false)
     }
-    if (zipcode.trim() || name.trim()) {
-      setEmptyInputs(false)
+    if (zipCheck && name) {
       findRestaurants()
     }
-    else {
-      setEmptyInputs(true);
-    }
+    setCheckInputs(true)
   }
 
-  let findRestaurants = () => {
-    let searchResults
-    getRestaurants(zipcode, name)
-    .then((results) => {
-      console.log("results", results)
-      searchResults = results.filter((data) => data["dba_name"].includes(name.toUpperCase()));
-      setResultsInState(searchResults)
-    })
+let findRestaurants = () => {
+  console.log(getRestaurants(zipcode));
+  getRestaurants(zipcode)
+  .then((results) => {
+    console.log("results", results)
+    let searchResults = results.filter((data) => data["dba_name"].includes(name.toUpperCase()));
+    setResultsInState(searchResults)
+  })
+}
 
 let setResultsInState = (results) => {
-  let filteredResults = results.reduce((accum, result) => {
-    if (!accum.length) {
-      accum.push(result)
-    }
-    let findDuplicates = accum.filter((item) => item["license_"] === result["license_"]);
-    if (!findDuplicates.length) {
-      accum.push(result)
+  let restaurantLicenses = results.reduce((accum, result) => {
+    if (!accum.includes(result["license_"])) {
+      accum.push(result["license_"]);
     }
     return accum
   }, [])
+
+  let filteredResults = restaurantLicenses.reduce((accum, license) => {
+    let licenseMatch = results.find(
+      (restaurant) => restaurant["license_"] === license
+    );
+    accum.push(licenseMatch);
+    return accum;
+  }, []);
+
   setResults(cleanData(filteredResults))
-  }
 }
+
 
   return (
     <section className="home-section">
-      <p>Search for a Chicago Restaurant by name, zipcode, or both</p>
+      <p>Search for a Restaurant by its name and zipcode</p>
       <form>
         <input
           type="number"
@@ -71,18 +74,18 @@ let setResultsInState = (results) => {
           value={name}
           onChange={(event) => setName(event.target.value)}
         />
-        <button onClick={(event) => checkInputs(event)}>Search</button>
+        <button onClick={(event) => validateInputs(event)}>Search</button>
       </form>
-      {invalidZip && (
+      {checkInputs && invalidZip && (
         <div className="error-container">
           <p className="form-error">Error - Invalid Zipcode</p>
           <p>Please enter a valid zipcode, or search by name instead.</p>
         </div>
       )}
-      {emptyInputs && !invalidZip && (
+      {checkInputs && !name.trim() && (
         <div className="error-container">
           <p className="form-error">Error - Missing Inputs</p>
-          <p>Please enter a zipcode, and/or a restaurant's name</p>
+          <p>Please enter a Restaurant name</p>
         </div>
       )}
     </section>
