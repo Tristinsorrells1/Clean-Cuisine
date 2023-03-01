@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Home.css";
 import getRestaurants from "../../APICalls.js"
+import {cleanData } from "../../util"
 
 const Home = () => {
 
@@ -8,6 +9,7 @@ const Home = () => {
   const [name, setName] = useState("")
   const [invalidZip, setInvalidZip] = useState("")
   const [emptyInputs, setEmptyInputs] = useState("")
+  const [results, setResults] = useState([])
 
   let checkInputs = (event) => {
     event.preventDefault();
@@ -28,12 +30,28 @@ const Home = () => {
   }
 
   let findRestaurants = () => {
-   getRestaurants(zipcode, name)
+    let searchResults
+    getRestaurants(zipcode, name)
     .then((results) => {
-      let filteredResults = results.filter((data) => data["dba_name"].includes(name.toUpperCase()));
-
+      console.log("results", results)
+      searchResults = results.filter((data) => data["dba_name"].includes(name.toUpperCase()));
+      setResultsInState(searchResults)
     })
+
+let setResultsInState = (results) => {
+  let filteredResults = results.reduce((accum, result) => {
+    if (!accum.length) {
+      accum.push(result)
+    }
+    let findDuplicates = accum.filter((item) => item["license_"] === result["license_"]);
+    if (!findDuplicates.length) {
+      accum.push(result)
+    }
+    return accum
+  }, [])
+  setResults(cleanData(filteredResults))
   }
+}
 
   return (
     <section className="home-section">
