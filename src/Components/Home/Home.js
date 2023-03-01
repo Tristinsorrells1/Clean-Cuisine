@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Home.css";
+import getRestaurants from "../../APICalls.js"
 
 const Home = () => {
 
@@ -19,10 +20,19 @@ const Home = () => {
     }
     if (zipcode.trim() || name.trim()) {
       setEmptyInputs(false)
+      findRestaurants()
     }
     else {
       setEmptyInputs(true);
     }
+  }
+
+  let findRestaurants = () => {
+   getRestaurants(zipcode, name)
+    .then((results) => {
+      let filteredResults = results.filter((data) => data["dba_name"].includes(name.toUpperCase()));
+
+    })
   }
 
   return (
