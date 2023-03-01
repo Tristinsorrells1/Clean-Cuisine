@@ -35,7 +35,12 @@ export const removeDuplicates = (results) => {
     let licenseMatch = results.find(
       (restaurant) => restaurant["license_"] === license
     );
-    accum.push(licenseMatch);
+    if (
+      licenseMatch["results"] !== "Out of Business" &&
+      licenseMatch["results"] !== "No Entry"
+    ) {
+      accum.push(licenseMatch);
+    }
     return accum;
   }, []);
 }

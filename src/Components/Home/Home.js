@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import "./Home.css";
 import getRestaurants from "../../APICalls.js"
 import {cleanData, removeDuplicates } from "../../util"
+import Results from "../Results/Results"
 
 const Home = () => {
 
   const [zipcode, setZipcode] = useState("")
   const [name, setName] = useState("")
   const [invalidZip, setInvalidZip] = useState(true)
-  const [results, setResults] = useState([])
+  const [results, setResults] = useState("")
   const [checkInputs, setCheckInputs] = useState(false)
 
   let validateInputs = (event) => {
@@ -27,10 +28,8 @@ const Home = () => {
   }
 
 let findRestaurants = () => {
-  console.log(getRestaurants(zipcode));
   getRestaurants(zipcode)
   .then((results) => {
-    console.log("results", results)
     let searchResults = results.filter((data) => data["dba_name"].includes(name.toUpperCase()));
     setResultsInState(searchResults)
   })
@@ -40,7 +39,6 @@ let setResultsInState = (results) => {
   let filteredResults = removeDuplicates(results)
   setResults(cleanData(filteredResults))
 }
-
 
   return (
     <section className="home-section">
@@ -74,6 +72,7 @@ let setResultsInState = (results) => {
           <p>Please enter a Restaurant name</p>
         </div>
       )}
+     {results && <Results results={results}/>}
     </section>
   );
 };
