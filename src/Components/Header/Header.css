@@ -1,0 +1,14 @@
+header {
+  display: flex;
+  align-items: center;
+}
+
+h1 {
+  font-size: 4vh;
+}
+
+.stars {
+  height: 8vh;
+  width: 18vw;
+  background-color: black;
+}
