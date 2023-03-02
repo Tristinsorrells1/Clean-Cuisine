@@ -34,7 +34,6 @@ useState(() => {
   const zipcode = JSON.parse(localStorage.getItem("zipcode"))
   if (results) {
     setResults(results)
-    // setFilterResults(results)
     setCheckInputs(true)
     setInvalidZip(invalidZip)
     setName(name)
@@ -61,7 +60,7 @@ let findRestaurants = () => {
 let setResultsInState = (results) => {
   let filteredResults = removeDuplicates(results)
   setResults(cleanData(filteredResults))
-  // setFilterResults(cleanData(filteredResults));
+  setFilterResults(cleanData(filteredResults))
 }
 
 let checkZipCode = (zip) => {
@@ -126,7 +125,7 @@ let filterResultDisplay = (value) => {
           <p>Please enter a Restaurant name</p>
         </div>
       )}
-     {results && <Results filterResultDisplay={filterResultDisplay} filterResults={filterResults} results={results}/>}
+     {results.length!==0 && <Results filterResultDisplay={filterResultDisplay} filterResults={filterResults} results={results}/>}
     </section>
   );
 };

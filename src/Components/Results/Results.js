@@ -6,11 +6,11 @@ import { Route, Routes } from "react-router";
 
 const Results = ({ results, filterResults, filterResultDisplay }) => {
 
-//   const [filterResults, setFilterResults] = useState([]);
+useEffect(() => {
 
-// useEffect(() => {
-//  setFilterResults(results)
-// }, [results]);
+}, [results, filterResults]);
+
+
   if (filterResults.length !== 0) {
     results = filterResults
   }

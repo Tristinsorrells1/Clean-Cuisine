@@ -9,13 +9,18 @@ const Details = (  ) => {
   const params = useParams()
   const [restaurant, setRestaurant] = useState("")
 
-useEffect(() => {
-   getRestaurant(params)
-   .then((results) => {
-     let filteredResults = removeDuplicates(results);
-     let cleanedData = cleanData(filteredResults)[0]
-     setRestaurant(cleanedData);
-  })
+useState(() => {
+   const results = JSON.parse(localStorage.getItem("results"));
+   let match = results.find((result) => result.license === params.id)
+   setRestaurant(match)
+  //  getRestaurant(params)
+  //  .then((results) => {
+  //    let filteredResults = removeDuplicates(results);
+  //    console.log(filteredResults)
+  //    let cleanedData = cleanData(filteredResults)[0]
+  //    setRestaurant(cleanedData);
+  // })
+
 }, []);
 
   return (

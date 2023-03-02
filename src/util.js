@@ -38,17 +38,16 @@ export const removeDuplicates = (results) => {
     return accum;
   }, []);
 
+  //  results = results.filter((restaurant) => {
+  //   restaurant["results"] !== "Out of Business" &&
+  //   restaurant.results !== "No Entry" &&
+  //   restaurant.results !== "Not Ready"
+  // })
+
   return restaurantLicenses.reduce((accum, license) => {
-    let licenseMatch = results.find(
-      (restaurant) => restaurant["license_"] === license
-    );
-    if (
-      licenseMatch["results"] !== "Out of Business" &&
-      licenseMatch["results"] !== "No Entry" &&
-      licenseMatch["results"] !== "Not Ready"
-    ) {
-      accum.push(licenseMatch);
-    }
+    let licenseMatch = results.find((restaurant) => restaurant["license_"] === license)
+    accum.push(licenseMatch)
+   
     return accum;
   }, []);
 }
