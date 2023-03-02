@@ -44,7 +44,8 @@ export const removeDuplicates = (results) => {
     );
     if (
       licenseMatch["results"] !== "Out of Business" &&
-      licenseMatch["results"] !== "No Entry"
+      licenseMatch["results"] !== "No Entry" &&
+      licenseMatch["results"] !== "Not Ready"
     ) {
       accum.push(licenseMatch);
     }
