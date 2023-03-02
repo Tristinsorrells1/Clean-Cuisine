@@ -1,8 +1,7 @@
-import { React, useEffect, useState} from "react";
+import { React} from "react";
 import ResultCard from "../ResultCard/ResultCard";
 import "./Results.css"
-import Details from "../Details/Details";
-import { Route, Routes } from "react-router";
+
 
 const Results = ({ results, filterResults, filterResultDisplay }) => {
 
