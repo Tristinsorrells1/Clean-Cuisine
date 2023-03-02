@@ -34,6 +34,7 @@ useState(() => {
   const zipcode = JSON.parse(localStorage.getItem("zipcode"))
   if (results) {
     setResults(results)
+    setFilterResults(results)
     setCheckInputs(true)
     setInvalidZip(invalidZip)
     setName(name)
