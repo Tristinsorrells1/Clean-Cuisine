@@ -48,6 +48,7 @@ const Results = ({ results, filterResults, filterResultDisplay }) => {
         ></input>
       </form>
       <section className="results-conatiner">{cards}</section>
+      {cards.length===0 && <p>No Matches Found</p>}
     </>
   );
 };
