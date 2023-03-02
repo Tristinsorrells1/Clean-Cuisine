@@ -76,12 +76,12 @@ let filterResultDisplay = (value) => {
   let newResults
   switch (value) {
     case "Only Show Passes": {
-      newResults = results.filter((result) => result.result.includes("Pass"))
+      newResults = results.filter((result) => result.result.includes("Pass")) 
       break;
     }
     case "Only Show Fails": {
-       newResults = results.filter((result) =>result.result.includes("Fail"));
-        break;
+      newResults = results.filter((result) =>result.result.includes("Fail")) 
+      break;
     }
     default: {
     newResults = [...results]

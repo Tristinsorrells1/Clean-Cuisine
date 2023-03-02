@@ -6,16 +6,11 @@ import { Route, Routes } from "react-router";
 
 const Results = ({ results, filterResults, filterResultDisplay }) => {
 
-useEffect(() => {
-
-}, [results, filterResults]);
-
-
-  if (filterResults.length !== 0) {
+  if (filterResults !== 0) {
     results = filterResults
   }
 
-  let cards = results.map((result) => {
+  let cards = filterResults.map((result) => {
     return (
       <ResultCard
         name={result["name"]}
