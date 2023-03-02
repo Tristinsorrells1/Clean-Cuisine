@@ -1,23 +1,3 @@
-export const cleanData = (results) => {
-  return results.map((data) => {
-    return {
-      inspection_id: data["inspection_id"],
-      name: removeAllCaps(data["dba_name"]),
-      license: data["license_"],
-      risk: data.risk,
-      address: removeAllCaps(data.address),
-      city: removeAllCaps(data["city"]),
-      state: data.state,
-      zip: data.zip,
-      date: reformatDate(data["inspection_date"]),
-      result: data.results,
-      violations: data.violations || "No Violations",
-      latitude: data.latitude,
-      longitude: data.longitude
-    };
-  })
-}
-
 export const reformatDate = (date) => {
   const newDate = new Date(date);
   return `${newDate.getMonth() + 1}/${newDate.getDate()}/${newDate.getFullYear()}`;
@@ -39,16 +19,31 @@ export const removeDuplicates = (results) => {
   }, []);
 
   return restaurantLicenses.reduce((accum, license) => {
-    let licenseMatch = results.find(
-      (restaurant) => restaurant["license_"] === license
-    );
-    if (
-      licenseMatch["results"] !== "Out of Business" &&
-      licenseMatch["results"] !== "No Entry" &&
-      licenseMatch["results"] !== "Not Ready"
-    ) {
-      accum.push(licenseMatch);
-    }
+    let licenseMatch = results.find((restaurant) => restaurant["license_"] === license)
+    accum.push(licenseMatch)
+   
     return accum;
   }, []);
 }
+
+export const cleanData = (results) => {
+  results = results.filter((restaurant) => restaurant.results !== "Out of Business");
+
+  return results.map((data) => {
+    return {
+      inspection_id: data["inspection_id"],
+      name: removeAllCaps(data["dba_name"]),
+      license: data["license_"],
+      risk: data.risk,
+      address: removeAllCaps(data.address),
+      city: removeAllCaps(data["city"]),
+      state: data.state,
+      zip: data.zip,
+      date: reformatDate(data["inspection_date"]),
+      result: data.results,
+      violations: data.violations || "No Violations",
+      latitude: data.latitude,
+      longitude: data.longitude,
+    };
+  });
+};

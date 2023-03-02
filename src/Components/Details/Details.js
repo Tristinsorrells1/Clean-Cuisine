@@ -1,21 +1,16 @@
 import { React, useEffect, useState} from "react";
 import "./Details.css";
 import { useParams } from "react-router-dom";
-import { getRestaurant } from "../../APICalls";
-import { cleanData, removeDuplicates } from "../../util";
 import { NavLink } from "react-router-dom";
 
 const Details = (  ) => {
   const params = useParams()
   const [restaurant, setRestaurant] = useState("")
 
-useEffect(() => {
-   getRestaurant(params)
-   .then((results) => {
-     let filteredResults = removeDuplicates(results);
-     let cleanedData = cleanData(filteredResults)[0]
-     setRestaurant(cleanedData);
-  })
+useState(() => {
+   const results = JSON.parse(localStorage.getItem("results"));
+   let match = results.find((result) => result.license === params.id)
+   setRestaurant(match)
 }, []);
 
   return (

@@ -11,6 +11,8 @@ const Home = () => {
   const [invalidZip, setInvalidZip] = useState(true)
   const [results, setResults] = useState([])
   const [checkInputs, setCheckInputs] = useState(false)
+  const [filterResults, setFilterResults] = useState([])
+  const [noMatches, setNoMatches] = useState("")
 
 useEffect(() => {
   localStorage.setItem("results", JSON.stringify(results))
@@ -21,9 +23,11 @@ useEffect(() => {
 
 useEffect(() => {
   if (invalidZip || !name) {
-    setResultsInState([]);
+    setResults([])
+    setNoMatches("")
   }
 }, [invalidZip, name]);
+
 
 useState(() => {
   const results = JSON.parse(localStorage.getItem("results"))
@@ -31,7 +35,8 @@ useState(() => {
   const name = JSON.parse(localStorage.getItem("name"))
   const zipcode = JSON.parse(localStorage.getItem("zipcode"))
   if (results) {
-    setResults(results);
+    setResults(results)
+    setFilterResults(results)
     setCheckInputs(true)
     setInvalidZip(invalidZip)
     setName(name)
@@ -58,6 +63,12 @@ let findRestaurants = () => {
 let setResultsInState = (results) => {
   let filteredResults = removeDuplicates(results)
   setResults(cleanData(filteredResults))
+  setFilterResults(cleanData(filteredResults))
+  if (results.length === 0) {
+    setNoMatches(true)
+  } else {
+    setNoMatches(false);
+  }
 }
 
 let checkZipCode = (zip) => {
@@ -67,6 +78,24 @@ let checkZipCode = (zip) => {
     } else if (zipCheck) {
       setInvalidZip(false);
     }
+}
+
+let filterResultDisplay = (value) => {
+  let newResults
+  switch (value) {
+    case "Only Show Passes": {
+      newResults = results.filter((result) => result.result.includes("Pass")) 
+      break;
+    }
+    case "Only Show Fails": {
+      newResults = results.filter((result) =>result.result.includes("Fail")) 
+      break;
+    }
+    default: {
+    newResults = [...results]
+    }
+  }
+  return setFilterResults(newResults);
 }
 
   return (
@@ -79,8 +108,8 @@ let checkZipCode = (zip) => {
           name="zipcode"
           value={zipcode}
           onChange={(event) => {
-            setZipcode(event.target.value)
-            checkZipCode(event.target.value)
+            setZipcode(event.target.value);
+            checkZipCode(event.target.value);
           }}
         />
         <input
@@ -104,7 +133,14 @@ let checkZipCode = (zip) => {
           <p>Please enter a Restaurant name</p>
         </div>
       )}
-     {results && <Results results={results}/>}
+      {results.length>0 && (
+        <Results
+          filterResultDisplay={filterResultDisplay}
+          filterResults={filterResults}
+          results={results}
+        />
+        )}
+      {noMatches && (<p>No Matches</p>)}
     </section>
   );
 };
