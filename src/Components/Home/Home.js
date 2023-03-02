@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { React, useState, useEffect} from "react";
 import "./Home.css";
 import { getRestaurants } from "../../APICalls.js"
 import {cleanData, removeDuplicates } from "../../util"
@@ -9,8 +9,20 @@ const Home = () => {
   const [zipcode, setZipcode] = useState("")
   const [name, setName] = useState("")
   const [invalidZip, setInvalidZip] = useState(true)
-  const [results, setResults] = useState("")
+  const [results, setResults] = useState([])
   const [checkInputs, setCheckInputs] = useState(false)
+
+useEffect(() => {
+  localStorage.setItem("results", JSON.stringify(results))
+}, [results]);
+
+useState(() => {
+  const results = JSON.parse(localStorage.getItem("results"));
+  console.log("state", results)
+  if (results) {
+    setResults(results);
+  }
+}, []);
 
   let validateInputs = (event) => {
     event.preventDefault();
