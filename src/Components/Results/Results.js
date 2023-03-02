@@ -1,13 +1,14 @@
 import React from "react";
 import ResultCard from "../ResultCard/ResultCard";
 import "./Results.css"
-
+import Details from "../Details/Details";
+import { Route, Routes } from "react-router";
 
 const Results = ({ results }) => {
   let cards = results.map((result) => {
     return (
       <ResultCard
-        name = {result["dba_name"]}
+        name = {result["name"]}
         risk = {result.risk}
         address = {result.address}
         city = {result.city}
@@ -22,10 +23,10 @@ const Results = ({ results }) => {
   })
 
   return (
-   <section className="results-conatiner">
-    {cards}
-   </section>
-  )
+    <>
+      <section className="results-conatiner">{cards}</section>
+    </>
+  );
 }
 
 export default Results;

@@ -1,4 +1,4 @@
-const getRestaurants = async (zipcode) => {
+export const getRestaurants = async (zipcode) => {
   const limit = 10000;
   let offset = 0;
   let results;
@@ -25,7 +25,15 @@ const getRestaurants = async (zipcode) => {
   return allResults;
 }
   
-export default getRestaurants;
-
-// 60632 
-// 60607
+export const getRestaurant = (params) => {
+  return fetch(`https://data.cityofchicago.org/resource/4ijn-s7e5.json?license_=${params.id}`)
+  .then((response) => {
+      if (!response.ok) {
+        console.log("response not okay", response);
+      } 
+      else {
+        return response.json().then((data) => data);
+      }
+    })
+      .catch((error) => console.log(error.message));
+}

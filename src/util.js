@@ -2,7 +2,7 @@ export const cleanData = (results) => {
   return results.map((data) => {
     return {
       inspection_id: data["inspection_id"],
-      dba_name: data["dba_name"],
+      name: removeAllCaps(data["dba_name"]),
       license: data["license_"],
       risk: data.risk,
       address: data.address,
@@ -21,6 +21,13 @@ export const cleanData = (results) => {
 export const reformatDate = (date) => {
   const newDate = new Date(date);
   return `${newDate.getMonth() + 1}/${newDate.getDate()}/${newDate.getFullYear()}`;
+}
+
+export const removeAllCaps = (name) => {
+  return name
+    .split(" ")
+    .map((item) => item.charAt(0).toUpperCase() + item.slice(1).toLowerCase())
+    .join(" ");
 }
 
 export const removeDuplicates = (results) => {

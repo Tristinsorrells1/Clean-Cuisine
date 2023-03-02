@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Home.css";
-import getRestaurants from "../../APICalls.js"
+import { getRestaurants } from "../../APICalls.js"
 import {cleanData, removeDuplicates } from "../../util"
 import Results from "../Results/Results"
 
