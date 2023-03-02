@@ -24,20 +24,23 @@ useState(() => {
   }
 }, []);
 
-  let validateInputs = (event) => {
-    event.preventDefault();
-    let zipCheck = /^\d{5}$/.test(zipcode)
-    if (!zipCheck) {
-      setInvalidZip(true)
-    }
-    else if (zipCheck) {
-      setInvalidZip(false)
-    }
-    if (zipCheck && name) {
-      findRestaurants()
-    }
-    setCheckInputs(true)
+let validateInputs = (event) => {
+  event.preventDefault();
+  let zipCheck = /^\d{5}$/.test(zipcode)
+  if (!zipCheck) {
+    setInvalidZip(true)
   }
+  else if (zipCheck) {
+    setInvalidZip(false)
+  }
+  if (zipCheck && name) {
+    findRestaurants()
+  }
+  if (!zipCheck || !name) {
+    setResultsInState([]);
+  }
+  setCheckInputs(true)
+}
 
 let findRestaurants = () => {
   getRestaurants(zipcode)
@@ -75,7 +78,7 @@ let setResultsInState = (results) => {
       {checkInputs && invalidZip && (
         <div className="error-container">
           <p className="form-error">Error - Invalid Zipcode</p>
-          <p>Please enter a valid zipcode, or search by name instead.</p>
+          <p>Please enter a valid zipcode before searching.</p>
         </div>
       )}
       {checkInputs && !name.trim() && (

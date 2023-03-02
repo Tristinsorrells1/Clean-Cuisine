@@ -4,13 +4,13 @@ import { NavLink } from "react-router-dom";
 
 
 
-const ResultCard = ({  name, risk, address, city, zip, date, results, violations, license }) => {
+const ResultCard = ({  name, risk, address, city, zip, date, result, violations, license }) => {
   return (
     <>
     <NavLink to={`/${license}`}>
       <div className="result-card">
         <p>{name}</p>
-        <p>{results}</p>
+        <p>{result}</p>
       </div>
     </NavLink>
     </>

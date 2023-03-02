@@ -14,7 +14,7 @@ const Results = ({ results }) => {
         city = {result.city}
         zip = {result.zip}
         date = {result["inspection_date"]}
-        results = {result["results"]}
+        result = {result["result"]}
         violations = {result.violations}
         license = {result.license}
         key = {result.license}
