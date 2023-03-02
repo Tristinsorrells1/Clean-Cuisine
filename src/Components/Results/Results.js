@@ -2,7 +2,6 @@ import { React} from "react";
 import ResultCard from "../ResultCard/ResultCard";
 import "./Results.css"
 
-
 const Results = ({ results, filterResults, filterResultDisplay }) => {
 
   if (filterResults !== 0) {
@@ -48,7 +47,7 @@ const Results = ({ results, filterResults, filterResultDisplay }) => {
         ></input>
       </form>
       <section className="results-conatiner">{cards}</section>
-      {cards.length===0 && <p>No Matches Found</p>}
+      {cards.length === 0 && <p>No Matches Found</p>}
     </>
   );
 };

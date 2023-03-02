@@ -12,6 +12,7 @@ const Home = () => {
   const [results, setResults] = useState([])
   const [checkInputs, setCheckInputs] = useState(false)
   const [filterResults, setFilterResults] = useState([])
+  const [noMatches, setNoMatches] = useState("")
 
 useEffect(() => {
   localStorage.setItem("results", JSON.stringify(results))
@@ -22,7 +23,8 @@ useEffect(() => {
 
 useEffect(() => {
   if (invalidZip || !name) {
-    setResultsInState([]);
+    setResults([])
+    setNoMatches("")
   }
 }, [invalidZip, name]);
 
@@ -62,6 +64,11 @@ let setResultsInState = (results) => {
   let filteredResults = removeDuplicates(results)
   setResults(cleanData(filteredResults))
   setFilterResults(cleanData(filteredResults))
+  if (results.length === 0) {
+    setNoMatches(true)
+  } else {
+    setNoMatches(false);
+  }
 }
 
 let checkZipCode = (zip) => {
@@ -101,8 +108,8 @@ let filterResultDisplay = (value) => {
           name="zipcode"
           value={zipcode}
           onChange={(event) => {
-            setZipcode(event.target.value)
-            checkZipCode(event.target.value)
+            setZipcode(event.target.value);
+            checkZipCode(event.target.value);
           }}
         />
         <input
@@ -126,7 +133,14 @@ let filterResultDisplay = (value) => {
           <p>Please enter a Restaurant name</p>
         </div>
       )}
-     {results.length!==0 && <Results filterResultDisplay={filterResultDisplay} filterResults={filterResults} results={results}/>}
+      {results.length>0 && (
+        <Results
+          filterResultDisplay={filterResultDisplay}
+          filterResults={filterResults}
+          results={results}
+        />
+        )}
+      {noMatches && (<p>No Matches</p>)}
     </section>
   );
 };
