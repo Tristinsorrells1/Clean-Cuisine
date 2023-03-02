@@ -1,12 +1,19 @@
 import React from "react";
 import "./ResultCard.css"
+import { NavLink } from "react-router-dom";
 
-const ResultCard = ({  name, risk, address, city, zip, date, results, violations, license }) => {
+
+
+const ResultCard = ({  name, risk, address, city, zip, date, result, violations, license }) => {
   return (
-  <div className="result-card">
-    <p>{name}</p>
-    <p>{results}</p>
-  </div>
+    <>
+    <NavLink to={`/${license}`} className="NavLink">
+      <div className="result-card">
+        <p className="card-name">{name}</p>
+        <p className="card-result">{result}</p>
+      </div>
+    </NavLink>
+    </>
   )
 };
 

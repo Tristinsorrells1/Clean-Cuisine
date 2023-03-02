@@ -2,15 +2,15 @@ export const cleanData = (results) => {
   return results.map((data) => {
     return {
       inspection_id: data["inspection_id"],
-      dba_name: data["dba_name"],
+      name: removeAllCaps(data["dba_name"]),
       license: data["license_"],
       risk: data.risk,
-      address: data.address,
-      city: data["city"].toLowerCase(),
+      address: removeAllCaps(data.address),
+      city: removeAllCaps(data["city"]),
       state: data.state,
       zip: data.zip,
-      inspection_date: reformatDate(data["inspection_date"]),
-      results: data.results,
+      date: reformatDate(data["inspection_date"]),
+      result: data.results,
       violations: data.violations || "No Violations",
       latitude: data.latitude,
       longitude: data.longitude
@@ -21,6 +21,13 @@ export const cleanData = (results) => {
 export const reformatDate = (date) => {
   const newDate = new Date(date);
   return `${newDate.getMonth() + 1}/${newDate.getDate()}/${newDate.getFullYear()}`;
+}
+
+export const removeAllCaps = (name) => {
+  return name
+    .split(" ")
+    .map((item) => item.charAt(0).toUpperCase() + item.slice(1).toLowerCase())
+    .join(" ");
 }
 
 export const removeDuplicates = (results) => {
@@ -37,7 +44,8 @@ export const removeDuplicates = (results) => {
     );
     if (
       licenseMatch["results"] !== "Out of Business" &&
-      licenseMatch["results"] !== "No Entry"
+      licenseMatch["results"] !== "No Entry" &&
+      licenseMatch["results"] !== "Not Ready"
     ) {
       accum.push(licenseMatch);
     }

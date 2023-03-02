@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { React, useState, useEffect} from "react";
 import "./Home.css";
-import getRestaurants from "../../APICalls.js"
+import { getRestaurants } from "../../APICalls.js"
 import {cleanData, removeDuplicates } from "../../util"
 import Results from "../Results/Results"
 
@@ -9,23 +9,43 @@ const Home = () => {
   const [zipcode, setZipcode] = useState("")
   const [name, setName] = useState("")
   const [invalidZip, setInvalidZip] = useState(true)
-  const [results, setResults] = useState("")
+  const [results, setResults] = useState([])
   const [checkInputs, setCheckInputs] = useState(false)
 
-  let validateInputs = (event) => {
-    event.preventDefault();
-    let zipCheck = /^\d{5}$/.test(zipcode)
-    if (!zipCheck) {
-      setInvalidZip(true)
-    }
-    else if (zipCheck) {
-      setInvalidZip(false)
-    }
-    if (zipCheck && name) {
-      findRestaurants()
-    }
-    setCheckInputs(true)
+useEffect(() => {
+  localStorage.setItem("results", JSON.stringify(results))
+  localStorage.setItem("invalidZip", JSON.stringify(invalidZip))
+  localStorage.setItem("name", JSON.stringify(name));
+  localStorage.setItem("zipcode", JSON.stringify(zipcode))
+}, [results]);
+
+useEffect(() => {
+  if (invalidZip || !name) {
+    setResultsInState([]);
   }
+}, [invalidZip, name]);
+
+useState(() => {
+  const results = JSON.parse(localStorage.getItem("results"))
+  const invalidZip = JSON.parse(localStorage.getItem("invalidZip"))
+  const name = JSON.parse(localStorage.getItem("name"))
+  const zipcode = JSON.parse(localStorage.getItem("zipcode"))
+  if (results) {
+    setResults(results);
+    setCheckInputs(true)
+    setInvalidZip(invalidZip)
+    setName(name)
+    setZipcode(zipcode)
+  }
+}, []);
+
+let validateInputs = (event) => {
+  event.preventDefault();
+  if (!invalidZip && name) {
+    findRestaurants()
+  }
+  setCheckInputs(true)
+}
 
 let findRestaurants = () => {
   getRestaurants(zipcode)
@@ -40,6 +60,15 @@ let setResultsInState = (results) => {
   setResults(cleanData(filteredResults))
 }
 
+let checkZipCode = (zip) => {
+  let zipCheck = /^\d{5}$/.test(zip)
+    if (!zipCheck) {
+      setInvalidZip(true);
+    } else if (zipCheck) {
+      setInvalidZip(false);
+    }
+}
+
   return (
     <section className="home-section">
       <p>Search for a Restaurant by its name and zipcode</p>
@@ -49,7 +78,10 @@ let setResultsInState = (results) => {
           placeholder="Enter Zipcode"
           name="zipcode"
           value={zipcode}
-          onChange={(event) => setZipcode(event.target.value)}
+          onChange={(event) => {
+            setZipcode(event.target.value)
+            checkZipCode(event.target.value)
+          }}
         />
         <input
           type="text"
@@ -63,7 +95,7 @@ let setResultsInState = (results) => {
       {checkInputs && invalidZip && (
         <div className="error-container">
           <p className="form-error">Error - Invalid Zipcode</p>
-          <p>Please enter a valid zipcode, or search by name instead.</p>
+          <p>Please enter a valid zipcode before searching.</p>
         </div>
       )}
       {checkInputs && !name.trim() && (

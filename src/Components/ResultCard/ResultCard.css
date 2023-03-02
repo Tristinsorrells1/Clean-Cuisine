@@ -1,5 +1,9 @@
 .result-card {
   border: 2px solid red;
   display: flex;
-justify-content: space-evenly;
+  justify-content: space-evenly;
+}
+.NavLink {
+  text-decoration: none;
+  color: black;
 }

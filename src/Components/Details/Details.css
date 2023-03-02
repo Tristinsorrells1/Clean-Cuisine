@@ -1,0 +1,53 @@
+.details-section {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 90vh;
+  border: 2px solid red;
+}
+
+.address-and-iframe-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.iframe-placeholder {
+  width: 30vw;
+  height: 30vh;
+  background-color: grey;
+}
+
+.name-and-address-container {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  align-items: center;
+}
+
+.inspection-results-header,
+.violation-header,
+.yelp-header {
+  width: 70vw;
+  height: 5vh;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: rgb(244, 111, 111);
+  font-size: 3.5vh;
+}
+
+.inspection-details,
+.violation-details,
+.yelp-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 70vw;
+  margin-right: auto;
+  margin-left: auto;
+  border: 2px solid green;
+}
+
+.yelp-placeholder {
+  height: 20vh;
+  width: 20vw;
+  background-color: grey;
+}
