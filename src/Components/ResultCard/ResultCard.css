@@ -1,9 +1,38 @@
 .result-card {
-  border: 2px solid red;
   display: flex;
   justify-content: space-evenly;
+  border: 2px solid black;
+  height: 7vh;
+  margin: 2vh;
+  background-color: rgb(223, 209, 209);
 }
 .NavLink {
   text-decoration: none;
   color: black;
+}
+
+.tired {
+  background-color: black;
+  height: 3vh;
+  width: 3vw;
+}
+
+.name-container {
+  width: 25vw;
+}
+
+.result-container {
+  width: 20vw;
+}
+
+.result-container,
+.name-container {
+  /* border: 2px solid black;  */
+  border-radius: 5px;
+  height: 5vh;
+  margin: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: rgb(220, 206, 206); */
 }

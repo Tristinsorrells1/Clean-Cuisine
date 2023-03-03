@@ -46,7 +46,7 @@ const Results = ({ results, filterResults, filterResultDisplay }) => {
           className="filter-button"
         ></input>
       </form>
-      <section className="results-conatiner">{cards}</section>
+      <section className="results-container">{cards}</section>
       {cards.length === 0 && <p>No Matches Found</p>}
     </>
   );

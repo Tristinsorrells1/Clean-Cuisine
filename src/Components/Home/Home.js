@@ -100,7 +100,7 @@ let filterResultDisplay = (value) => {
 
   return (
     <section className="home-section">
-      <p>Search for a Restaurant by its name and zipcode</p>
+      <p>Search for a Restaurant by Name and Zipcode</p>
       <form>
         <input
           type="number"
