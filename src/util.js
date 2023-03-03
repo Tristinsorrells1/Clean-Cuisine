@@ -30,6 +30,7 @@ export const cleanData = (results) => {
   results = results.filter((restaurant) => restaurant.results !== "Out of Business");
 
   return results.map((data) => {
+    console.log(data)
     return {
       inspection_id: data["inspection_id"],
       name: removeAllCaps(data["dba_name"]),
@@ -42,8 +43,8 @@ export const cleanData = (results) => {
       date: reformatDate(data["inspection_date"]),
       result: data.results,
       violations: data.violations || "No Violations",
-      latitude: data.latitude,
-      longitude: data.longitude,
+      latitude: Number(data.latitude),
+      longitude: Number(data.longitude),
     };
   });
 };

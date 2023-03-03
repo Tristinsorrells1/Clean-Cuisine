@@ -16,9 +16,9 @@ useState(() => {
 
   return (
     <>
-    <NavLink to={"/"}>
-      <button>Back to Results</button>
-    </NavLink>
+      <NavLink to={"/"}>
+        <button>Back to Results</button>
+      </NavLink>
       <section className="details-section">
         <div className="address-and-iframe-container">
           <div className="name-and-address-container">
@@ -56,6 +56,9 @@ useState(() => {
         <div className="map">
           <Reviews restaurant={restaurant} />
         </div>
+        {/* <iframe
+          src={`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${restaurant.location}&radius=1500&keyword=${restaurant.name}&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`}
+        ></iframe> */}
       </section>
     </>
   );
