@@ -1,5 +1,5 @@
 .home-section {
-  height: 50vh;
+  height: 80vh;
   width: 50vw;
   border: 1px solid grey;
   width: 60vw;
@@ -9,6 +9,11 @@
   flex-direction: column;
   align-items: center;
 }
+
+input {
+  margin: 1vh;
+}
+
 
 .form-error {
   color: red;
