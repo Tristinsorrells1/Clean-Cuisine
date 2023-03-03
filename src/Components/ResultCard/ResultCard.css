@@ -11,10 +11,12 @@
   color: black;
 }
 
-.tired {
-  background-color: black;
-  height: 3vh;
+.warning-icon,
+.fail-icon,
+.check-icon {
+  height: 4.5vh;
   width: 3vw;
+  margin: .5vw;
 }
 
 .name-container {
