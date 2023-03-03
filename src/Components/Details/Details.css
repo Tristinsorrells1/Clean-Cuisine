@@ -2,7 +2,6 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  height: 90vh;
   border: 2px solid red;
 }
 
@@ -50,4 +49,9 @@
   height: 20vh;
   width: 20vw;
   background-color: grey;
+}
+
+.map {
+  height: 40vh;
+  width: 40vw;
 }

@@ -2,6 +2,7 @@ import { React, useEffect, useState} from "react";
 import "./Details.css";
 import { useParams } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import Reviews from "./Reviews"
 
 const Details = (  ) => {
   const params = useParams()
@@ -51,6 +52,9 @@ useState(() => {
             <div className="yelp-placeholder"></div>
             <div className="yelp-placeholder"></div>
           </div>
+        </div>
+        <div className="map">
+          <Reviews restaurant={restaurant} />
         </div>
       </section>
     </>
