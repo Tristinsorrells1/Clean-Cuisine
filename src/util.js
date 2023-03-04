@@ -44,6 +44,7 @@ export const cleanData = (results) => {
       violations: data.violations || "No Violations",
       latitude: Number(data.latitude),
       longitude: Number(data.longitude),
+      urlName: removeAllCaps(data["dba_name"]).replaceAll(" ", "+"),
     };
   });
 };

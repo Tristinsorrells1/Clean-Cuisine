@@ -2,19 +2,23 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  border: 2px solid red;
+  border: 2px solid black;
 }
 
 .address-and-iframe-container {
   display: flex;
-  justify-content: space-evenly;
+  height: 45vh;
+  justify-content: center;
+  width: 100vw;
 }
 
 .name-and-address-container {
   display: flex;
   flex-direction: column;
   border: 2px solid black;
+  height: 40vh;
   align-items: center;
+  margin-right: 3vw;
 }
 
 .inspection-results-header,
@@ -48,4 +52,16 @@
 .map {
   height: 40vh;
   width: 40vw;
+}
+
+.yelp-iframe {
+  height: 35vh;
+  width: 45vw;
+  flex-wrap: wrap;
+  transform: scale(0.5);
+  zoom: 3;
+  border: 2px solid green;
+  margin-top: -8vh;
+  display: flex;
+  align-self: center;
 }

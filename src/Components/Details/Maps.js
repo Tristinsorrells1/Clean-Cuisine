@@ -1,7 +1,7 @@
-
-import { React, useEffect, useState, useFetch, useCallback } from "react";
+import { React,  useState, useCallback } from "react";
 import "./Details.css";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
+
 
 const containerStyle = {
   width: "100%",
@@ -9,7 +9,13 @@ const containerStyle = {
   borderRadius: "15px",
 };
 
-export default function Reviews({ restaurant }) {
+export default function Maps({ restaurant }) {
+
+  const createMapLink = () => {
+    const searchName = restaurant.name.replaceAll(" ", "+");
+    return `https://www.google.com/maps/dir/?api=1&destination=${searchName}%2CChicago%2CIL`;
+  };
+
   const [map, setMap] = useState(null);
   const center = { lat: restaurant.latitude, lng: restaurant.longitude };
 
@@ -22,7 +28,6 @@ export default function Reviews({ restaurant }) {
     setMap(map);
   }, []);
 
-
   return isLoaded ? (
     <GoogleMap
       mapContainerStyle={containerStyle}
@@ -33,7 +38,8 @@ export default function Reviews({ restaurant }) {
         mapTypeControl: false,
       }}
     >
-      <Marker position={center} title={restaurant.name}/>
+      <Marker position={center} title={restaurant.name} onClick={() => window.open(createMapLink(), '_blank', 'noreferrer')}/>
+    
     </GoogleMap>
   ) : (
     <></>

@@ -25,15 +25,3 @@ export const getRestaurants = async (zipcode) => {
   return allResults;
 }
   
-// export const getRestaurant = (params) => {
-//   return fetch(`https://data.cityofchicago.org/resource/4ijn-s7e5.json?license_=${params.id}`)
-//   .then((response) => {
-//       if (!response.ok) {
-//         console.log("response not okay", response);
-//       } 
-//       else {
-//         return response.json().then((data) => data);
-//       }
-//     })
-//       .catch((error) => console.log(error.message));
-// }
