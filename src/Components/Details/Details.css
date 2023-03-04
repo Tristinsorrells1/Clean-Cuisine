@@ -43,9 +43,28 @@
   margin: 0;
 }
 
-.result {
+.result,
+.risk-level {
   display: flex;
   align-items: center;
+}
+
+#riskExplaination,
+.risk:hover .risk-level {
+  display: none;
+}
+
+.risk:hover #riskExplaination{
+  display: block;
+  width: 30vw;
+}
+
+li {
+  margin: 1vh;
+}
+
+.info-icon {
+  height: 5vh;
 }
 
 .inspection-results-header,

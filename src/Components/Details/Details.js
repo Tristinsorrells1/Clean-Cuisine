@@ -50,20 +50,39 @@ const Details = () => {
           <div className="inspection-results-header">Inspection Results</div>
           <div className="inspection-details">
             <p className="date">{`Date of Inspection: ${restaurant.date}`}</p>
-            <p className="risk">{`${restaurant.risk}`}</p>
-            <div className="result">{`Result: ${restaurant.result}`}
-            {(restaurant.result === "Pass" ||
-              restaurant.result === "Pass w/ Conditions") && (
+            <div className="risk">
+              <div className="risk-level">
+                <a> {restaurant.risk}</a>
+                <img className="info-icon" src="../../../Assets/info-icon.png"></img>
+              </div>
+              <div id="riskExplaination">
+                <ul>
+                  Food service establishments are compared to facilities that
+                  are in the same risk level.
+                  <li>Risk Level 1: inspected once per year</li>
+                  <li>Risk Level 2: inspected every 9 months</li>
+                  <li> Risk Level 3: inspected twice per year</li>
+                  <li>Risk Level 4: inspected 3 - 4 times per year</li>
+                </ul>
+              </div>
+            </div>
+            <div className="result">
+              {`Result: ${restaurant.result}`}
+              {(restaurant.result === "Pass" ||
+                restaurant.result === "Pass w/ Conditions") && (
                 <img
                   className="check-icon"
                   src="../../../Assets/check.png"
                 ></img>
               )}
-            {restaurant.result === "Fail" && (
-              <img className="fail-icon" src="../../../Assets/x-mark.png"></img>
-            )}
-            {(restaurant.result === "Not Ready" ||
-              restaurant.result === "No Entry") && (
+              {restaurant.result === "Fail" && (
+                <img
+                  className="fail-icon"
+                  src="../../../Assets/x-mark.png"
+                ></img>
+              )}
+              {(restaurant.result === "Not Ready" ||
+                restaurant.result === "No Entry") && (
                 <img
                   className="warning-icon"
                   src="../../../Assets/warning.png"
