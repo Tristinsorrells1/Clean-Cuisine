@@ -5,7 +5,7 @@ export const reformatDate = (date) => {
 
 export const removeAllCaps = (name) => {
   if (!name) {
-    return "No Violations"
+    return "No Documented Violations"
   }
   return name
     .split(" ")
@@ -54,16 +54,12 @@ export const cleanData = (results) => {
 
 export const formatViolations = (restaurant) => {
   let comments;
-  if (restaurant && restaurant.violations !== "No Violations") {
-    console.log(restaurant.violations);
+  if (restaurant && restaurant.violations !== "No Documented Violations") {
     comments = restaurant.violations.split("- Comments:").join("|").split("|");
-
-    console.log(comments);
     return comments.map((comment) => {
-      return <p className="violation-comment">{comment}</p>;
+      return <p key={comment} className="violation-comment">{comment}</p>;
     });
   } else if (restaurant) {
-    comments = restaurant.violations;
-    return <p className="violation-comment">{comments}</p>;
+    return <p className="violation-comment">{restaurant.violations}</p>;
   }
 };

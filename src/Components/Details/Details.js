@@ -53,7 +53,10 @@ const Details = () => {
             <div className="risk">
               <div className="risk-level">
                 <a> {restaurant.risk}</a>
-                <img className="info-icon" src="../../../Assets/info-icon.png"></img>
+                <img
+                  className="info-icon"
+                  src="../../../Assets/info-icon.png"
+                ></img>
               </div>
               <div id="riskExplaination">
                 <ul>
@@ -92,6 +95,7 @@ const Details = () => {
           </div>
         </div>
 
+           
         <div>
           <div className="violation-header">Violations</div>
           <div className="violation-details">
