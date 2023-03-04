@@ -1,44 +1,49 @@
-import { React, useState, useEffect} from "react";
+import { React, useState, useEffect } from "react";
 import "./Details.css";
 import { useParams } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-import Maps from "./Maps"
+import Maps from "./Maps";
 
+const Details = () => {
+  const params = useParams();
+  const [restaurant, setRestaurant] = useState("");
 
-const Details = (  ) => {
-  const params = useParams()
-  const [restaurant, setRestaurant] = useState("")
- 
+  useEffect(() => {
+    window.addEventListener("message", handleMessage);
 
-useState(() => {
-   const results = JSON.parse(localStorage.getItem("results"));
-   let match = results.find((result) => result.license === params.id)
-   setRestaurant(match)
-   
-}, [params.id]);
+    return () => {
+      window.removeEventListener("message", handleMessage);
+    };
+  }, []);
 
-useEffect(() => {
-  window.addEventListener("message", handleMessage);
-
-  return () => {
-    window.removeEventListener("message", handleMessage);
+  const handleMessage = (event) => {
+    if (event.origin === "https://www.yelp.com" && event.data === "setCookie") {
+      document.cookie = "cookieName=cookieValue; SameSite=None; Secure";
+    }
   };
-}, []);
 
-const handleMessage = (event) => {
-  if (event.origin === "http://localhost:3000") {
-    document.cookie = "cookieName=cookieValue; SameSite=None; Secure";
-    console.log("handled")
-  }
-};
+  const setCookie = () => {
+    const iframe = document.getElementById("my-iframe");
+    iframe.contentWindow.postMessage("setCookie", "https://www.yelp.com");
 
-const setCookie = () => {
-  window.top.postMessage(
-    "setCookie",
-    "https://clean-cuisine-1zo3z7exr-tristinsorrells1.vercel.app'"
-  );
-  console.log("iframe load")
-};
+    const cookies = document.cookie.split(";");
+    const updatedCookies = cookies.map((cookie) => {
+      if (cookie.trim().startsWith("SameSite")) {
+        return cookie;
+      }
+      return `${cookie.trim()}; SameSite=None; Secure`;
+    });
+
+   
+    const iframeDoc = iframe.contentWindow.document;
+    iframeDoc.cookie = updatedCookies.join("; ");
+  };
+
+  useEffect(() => {
+    const results = JSON.parse(localStorage.getItem("results"));
+    let match = results.find((result) => result.license === params.id);
+    setRestaurant(match);
+  }, [params.id]);
 
   return (
     <>
@@ -76,12 +81,12 @@ const setCookie = () => {
         <div className="yelp-container">
           <div className="yelp-header">Yelp Reviews</div>
         </div>
-        {setCookie()}
         {restaurant && (
           <iframe
+            id="my-iframe"
             src={`https://www.yelp.com/search?find_desc=${restaurant.urlName}+&find_loc=Chicago%2C+IL+${restaurant.zip}`}
             className="yelp-iframe"
-            onLoad={() => console.log("Yelp iframe loaded")}
+            onLoad={setCookie}
           ></iframe>
         )}
       </section>
