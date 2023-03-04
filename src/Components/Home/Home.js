@@ -13,6 +13,7 @@ const Home = () => {
   const [checkInputs, setCheckInputs] = useState(false)
   const [filterResults, setFilterResults] = useState([])
   const [noMatches, setNoMatches] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
 
 useEffect(() => {
   localStorage.setItem("results", JSON.stringify(results))
@@ -53,6 +54,7 @@ let validateInputs = (event) => {
 }
 
 let findRestaurants = () => {
+  setIsLoading(true)
   getRestaurants(zipcode)
   .then((results) => {
     let searchResults = results.filter((data) => data["dba_name"].includes(name.toUpperCase()));
@@ -64,6 +66,7 @@ let setResultsInState = (results) => {
   let filteredResults = removeDuplicates(results)
   setResults(cleanData(filteredResults))
   setFilterResults(cleanData(filteredResults))
+  setIsLoading(false);
   if (results.length === 0) {
     setNoMatches(true)
   } else {
@@ -133,14 +136,21 @@ let filterResultDisplay = (value) => {
           <p>Please enter a Restaurant name</p>
         </div>
       )}
-      {results.length>0 && (
+      {results.length > 0 && (
         <Results
           filterResultDisplay={filterResultDisplay}
           filterResults={filterResults}
           results={results}
         />
-        )}
-      {noMatches && (<p>No Matches</p>)}
+      )}
+      {isLoading && (
+        <img
+          src="/assets/spinnerblue.gif"
+          alt="loading"
+          className="loading-spinner"
+        />
+      )}
+      {noMatches && <p>No Matches</p>}
     </section>
   );
 };

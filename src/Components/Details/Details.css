@@ -2,26 +2,23 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  height: 90vh;
-  border: 2px solid red;
+  border: 2px solid black;
 }
 
 .address-and-iframe-container {
   display: flex;
-  justify-content: space-evenly;
-}
-
-.iframe-placeholder {
-  width: 30vw;
-  height: 30vh;
-  background-color: grey;
+  height: 45vh;
+  justify-content: center;
+  width: 100vw;
 }
 
 .name-and-address-container {
   display: flex;
   flex-direction: column;
   border: 2px solid black;
+  height: 40vh;
   align-items: center;
+  margin-right: 3vw;
 }
 
 .inspection-results-header,
@@ -50,4 +47,21 @@
   height: 20vh;
   width: 20vw;
   background-color: grey;
+}
+
+.map {
+  height: 40vh;
+  width: 40vw;
+}
+
+.yelp-iframe {
+  height: 35vh;
+  width: 45vw;
+  flex-wrap: wrap;
+  transform: scale(0.5);
+  zoom: 3;
+  border: 2px solid green;
+  margin-top: -8vh;
+  display: flex;
+  align-self: center;
 }
