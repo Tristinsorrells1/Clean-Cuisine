@@ -65,7 +65,8 @@
   width: 70vw;
   margin-right: auto;
   margin-left: auto;
-  height: 40vh;
+  height: fit-content;
+  max-height: 30vh;
   overflow-y: auto;
 }
 
