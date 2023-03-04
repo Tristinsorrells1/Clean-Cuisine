@@ -33,7 +33,10 @@ const handleMessage = (event) => {
 };
 
 const setCookie = () => {
-  window.top.postMessage("setCookie", "https://www.yelp.com/");
+  window.top.postMessage(
+    "setCookie",
+    "https://clean-cuisine-1zo3z7exr-tristinsorrells1.vercel.app'"
+  );
   console.log("iframe load")
 };
 
