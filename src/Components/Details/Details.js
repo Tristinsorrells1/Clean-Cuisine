@@ -8,37 +8,7 @@ const Details = () => {
   const params = useParams();
   const [restaurant, setRestaurant] = useState("");
 
-  useEffect(() => {
-    window.addEventListener("message", handleMessage);
-
-    return () => {
-      window.removeEventListener("message", handleMessage);
-    };
-  }, []);
-
-  const handleMessage = (event) => {
-    if (event.origin === "https://www.yelp.com" && event.data === "setCookie") {
-      document.cookie = "cookieName=cookieValue; SameSite=None; Secure";
-    }
-  };
-
-  const setCookie = () => {
-    const iframe = document.getElementById("my-iframe");
-    iframe.contentWindow.postMessage("setCookie", "https://www.yelp.com");
-
-    const cookies = document.cookie.split(";");
-    const updatedCookies = cookies.map((cookie) => {
-      if (cookie.trim().startsWith("SameSite")) {
-        return cookie;
-      }
-      return `${cookie.trim()}; SameSite=None; Secure`;
-    });
-
-   
-    const iframeDoc = iframe.contentWindow.document;
-    iframeDoc.cookie = updatedCookies.join("; ");
-  };
-
+  
   useEffect(() => {
     const results = JSON.parse(localStorage.getItem("results"));
     let match = results.find((result) => result.license === params.id);
@@ -84,9 +54,8 @@ const Details = () => {
         {restaurant && (
           <iframe
             id="my-iframe"
-            src={`https://www.yelp.com/search?find_desc=${restaurant.urlName}+&find_loc=Chicago%2C+IL+${restaurant.zip}`}
+            src={`/yelp-search/yelp-search?find_desc=${restaurant.urlName}+&find_loc=Chicago%2C+IL+${restaurant.zip}`}
             className="yelp-iframe"
-            onLoad={setCookie}
           ></iframe>
         )}
       </section>
