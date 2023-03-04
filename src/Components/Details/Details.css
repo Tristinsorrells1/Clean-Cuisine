@@ -61,6 +61,7 @@
   width: 70vw;
   margin-right: auto;
   margin-left: auto;
+  align-items: center;
 }
 
 .violation-details {

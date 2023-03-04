@@ -1,20 +1,19 @@
-import { React, useState, useEffect} from "react";
+import { React, useState, useEffect } from "react";
 import "./Details.css";
 import { useParams } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-import Maps from "./Maps"
-import { formatViolations } from '../../util'
+import Maps from "./Maps";
+import { formatViolations } from "../../util";
 
-const Details = (  ) => {
-  const params = useParams()
-  const [restaurant, setRestaurant] = useState("")
+const Details = () => {
+  const params = useParams();
+  const [restaurant, setRestaurant] = useState("");
 
-useState(() => {
-   const results = JSON.parse(localStorage.getItem("results"));
-   let match = results.find((result) => result.license === params.id)
-   setRestaurant(match)
-   
-}, [])
+  useState(() => {
+    const results = JSON.parse(localStorage.getItem("results"));
+    let match = results.find((result) => result.license === params.id);
+    setRestaurant(match);
+  }, []);
 
   return (
     <>
@@ -30,7 +29,8 @@ useState(() => {
               <p className="city">{`${restaurant.city}, IL`}</p>
               <p className="zip">{restaurant.zip}</p>
             </div>
-            <button className="directions-button"
+            <button
+              className="directions-button"
               onClick={() =>
                 window.open(
                   `https://www.google.com/maps/dir/?api=1&destination=${restaurant.urlName}%2CChicago%2CIL`,
@@ -52,12 +52,31 @@ useState(() => {
             <p className="date">{`Date of Inspection: ${restaurant.date}`}</p>
             <p className="risk">{`${restaurant.risk}`}</p>
             <p className="result">{`Result: ${restaurant.result}`}</p>
+            {(restaurant.result === "Pass" ||
+              restaurant.result === "Pass w/ Conditions") && (
+                <img
+                  className="check-icon"
+                  src="../../../Assets/check.png"
+                ></img>
+              )}
+            {restaurant.result === "Fail" && (
+              <img className="fail-icon" src="../../../Assets/x-mark.png"></img>
+            )}
+            {(restaurant.result === "Not Ready" ||
+              restaurant.result === "No Entry") && (
+                <img
+                  className="warning-icon"
+                  src="../../../Assets/warning.png"
+                ></img>
+              )}
           </div>
         </div>
 
         <div>
           <div className="violation-header">Violations</div>
-          <div className="violation-details">{formatViolations(restaurant)}</div>
+          <div className="violation-details">
+            {formatViolations(restaurant)}
+          </div>
         </div>
 
         <div className="yelp-container">
