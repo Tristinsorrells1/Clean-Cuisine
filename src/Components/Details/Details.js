@@ -26,13 +26,15 @@ useEffect(() => {
 }, []);
 
 const handleMessage = (event) => {
-  if (event.origin === "https://www.yelp.com" && event.data === "setCookie") {
+  if (event.origin === "http://localhost:3000") {
     document.cookie = "cookieName=cookieValue; SameSite=None; Secure";
+    console.log("handled")
   }
 };
 
 const setCookie = () => {
-  window.top.postMessage("setCookie", "https://www.yelp.com");
+  window.top.postMessage("setCookie", "https://www.yelp.com/");
+  console.log("iframe load")
 };
 
   return (
@@ -71,11 +73,12 @@ const setCookie = () => {
         <div className="yelp-container">
           <div className="yelp-header">Yelp Reviews</div>
         </div>
+        {setCookie()}
         {restaurant && (
           <iframe
             src={`https://www.yelp.com/search?find_desc=${restaurant.urlName}+&find_loc=Chicago%2C+IL+${restaurant.zip}`}
             className="yelp-iframe"
-            onLoad={setCookie}
+            onLoad={() => console.log("Yelp iframe loaded")}
           ></iframe>
         )}
       </section>
