@@ -30,7 +30,6 @@ export const cleanData = (results) => {
   results = results.filter((restaurant) => restaurant.results !== "Out of Business");
 
   return results.map((data) => {
-    console.log(data)
     return {
       inspection_id: data["inspection_id"],
       name: removeAllCaps(data["dba_name"]),

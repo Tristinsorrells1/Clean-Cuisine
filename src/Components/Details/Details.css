@@ -10,12 +10,6 @@
   justify-content: space-evenly;
 }
 
-.iframe-placeholder {
-  width: 30vw;
-  height: 30vh;
-  background-color: grey;
-}
-
 .name-and-address-container {
   display: flex;
   flex-direction: column;

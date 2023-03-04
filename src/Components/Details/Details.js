@@ -27,7 +27,9 @@ useState(() => {
             <p className="city">{`${restaurant.city}, IL`}</p>
             <p className="zip">{restaurant.zip}</p>
           </div>
-          <div className="iframe-placeholder"></div>
+          <div className="map">
+            <Reviews restaurant={restaurant} />
+          </div>
         </div>
         <div>
           <div className="inspection-results-header">Inspection Results</div>
@@ -53,12 +55,6 @@ useState(() => {
             <div className="yelp-placeholder"></div>
           </div>
         </div>
-        <div className="map">
-          <Reviews restaurant={restaurant} />
-        </div>
-        {/* <iframe
-          src={`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${restaurant.location}&radius=1500&keyword=${restaurant.name}&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`}
-        ></iframe> */}
       </section>
     </>
   );

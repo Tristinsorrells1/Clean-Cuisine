@@ -2,7 +2,6 @@
 import { React, useEffect, useState, useFetch, useCallback } from "react";
 import "./Details.css";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
-import axios from "axios";
 
 const containerStyle = {
   width: "100%",
@@ -23,17 +22,6 @@ export default function Reviews({ restaurant }) {
     setMap(map);
   }, []);
 
-  useEffect(() => {
-    const getDetails = () => {
-      console.log(restaurant)
-       axios({
-         method: "get",
-         url: `api/place/nearbysearch/json?location=${restaurant.latitude}, ${restaurant.longitude}&radius=1500&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`,
-         withCredentials: true,
-       });
-      }
-      getDetails()
-  }, [restaurant.place_id]);
 
   return isLoaded ? (
     <GoogleMap
@@ -45,7 +33,7 @@ export default function Reviews({ restaurant }) {
         mapTypeControl: false,
       }}
     >
-      <Marker position={center} />
+      <Marker position={center} title={restaurant.name}/>
     </GoogleMap>
   ) : (
     <></>
