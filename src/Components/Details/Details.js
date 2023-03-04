@@ -28,7 +28,7 @@ const formatViolations = () => {
   }
   else if (restaurant) {
     comments = restaurant.violations
-      return <p>{comments}</p>;
+      return <p className="violation-comment">{comments}</p>;
   }
 }
 
@@ -41,9 +41,11 @@ const formatViolations = () => {
         <div className="address-and-iframe-container">
           <div className="name-and-address-container">
             <h2>{restaurant.name}</h2>
-            <p className="street">{restaurant.address}</p>
-            <p className="city">{`${restaurant.city}, IL`}</p>
-            <p className="zip">{restaurant.zip}</p>
+            <div className="address-container">
+              <p className="street">{restaurant.address}</p>
+              <p className="city">{`${restaurant.city}, IL`}</p>
+              <p className="zip">{restaurant.zip}</p>
+            </div>
           </div>
           <div className="map">
             <Maps restaurant={restaurant} />

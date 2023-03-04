@@ -1,7 +1,7 @@
 .result-card {
   display: flex;
   justify-content: space-evenly;
-  border: 2px solid black;
+  border: 2px solid rgb(6, 19, 118);
   height: 7vh;
   margin: 2vh;
   background-color: rgb(223, 209, 209);
