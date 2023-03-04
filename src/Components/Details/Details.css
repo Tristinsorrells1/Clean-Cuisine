@@ -70,10 +70,16 @@
   overflow-y: auto;
 }
 
+
+
 .violation-comment {
   border: 2px solid black;
   text-align: center;
   width: 65vw;
+}
+
+.violation-comment:nth-child(odd) {
+  font-weight: bold;
 }
 
 

@@ -19,8 +19,9 @@ const formatViolations = () => {
   let comments
   if (restaurant && restaurant.violations !== "No Violations") {
     console.log(restaurant.violations)
-    comments = restaurant.violations.split("- Comments:")
-    comments[0] = `Violation #${comments[0]}`
+    comments = restaurant.violations.split("- Comments:").join("|").split("|")
+    
+  
     console.log(comments)
     return comments.map((comment) => {
       return <p className="violation-comment">{comment}</p>
