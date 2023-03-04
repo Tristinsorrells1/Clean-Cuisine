@@ -1,5 +1,5 @@
 .details-section {
-  border: 2px solid black;
+  border: 2px solid rgb(6, 19, 118);
   width: 80vw;
   margin-right: auto;
   margin-left: auto;
@@ -25,11 +25,16 @@
 .name-and-address-container {
   display: flex;
   flex-direction: column;
-  border: 2px solid black;
+  border: 2px solid rgb(6, 19, 118);
   height: fit-content;
   align-items: center;
   justify-content: center;
   margin: 3vw;
+  border-radius: 10px;
+}
+
+.directions-button {
+  margin: 2vh;
 }
 
 .street,
@@ -56,7 +61,6 @@
   width: 70vw;
   margin-right: auto;
   margin-left: auto;
-  border: 2px solid green;
 }
 
 .violation-details {
@@ -70,10 +74,8 @@
   overflow-y: auto;
 }
 
-
-
 .violation-comment {
-  border: 2px solid black;
+  border: 2px solid rgb(6, 19, 118);
   text-align: center;
   width: 65vw;
 }
@@ -81,7 +83,6 @@
 .violation-comment:nth-child(odd) {
   font-weight: bold;
 }
-
 
 .yelp-placeholder {
   height: 20vh;

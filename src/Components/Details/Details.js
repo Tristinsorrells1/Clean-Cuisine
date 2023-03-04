@@ -47,6 +47,17 @@ const formatViolations = () => {
               <p className="city">{`${restaurant.city}, IL`}</p>
               <p className="zip">{restaurant.zip}</p>
             </div>
+            <button className="directions-button"
+              onClick={() =>
+                window.open(
+                  `https://www.google.com/maps/dir/?api=1&destination=${restaurant.urlName}%2CChicago%2CIL`,
+                  "_blank",
+                  "noreferrer"
+                )
+              }
+            >
+              Directions
+            </button>
           </div>
           <div className="map">
             <Maps restaurant={restaurant} />
@@ -63,9 +74,7 @@ const formatViolations = () => {
 
         <div>
           <div className="violation-header">Violations</div>
-          <div className="violation-details">
-           {formatViolations()}
-          </div>
+          <div className="violation-details">{formatViolations()}</div>
         </div>
 
         <div className="yelp-container">

@@ -11,11 +11,6 @@ const containerStyle = {
 
 export default function Maps({ restaurant }) {
 
-  const createMapLink = () => {
-    const searchName = restaurant.name.replaceAll(" ", "+");
-    return `https://www.google.com/maps/dir/?api=1&destination=${searchName}%2CChicago%2CIL`;
-  };
-
   const [map, setMap] = useState(null);
   const center = { lat: restaurant.latitude, lng: restaurant.longitude };
 
@@ -38,8 +33,17 @@ export default function Maps({ restaurant }) {
         mapTypeControl: false,
       }}
     >
-      <Marker position={center} title={restaurant.name} onClick={() => window.open(createMapLink(), '_blank', 'noreferrer')}/>
-    
+      <Marker
+        position={center}
+        title={restaurant.name}
+        onClick={() =>
+          window.open(
+            `https://www.google.com/maps/dir/?api=1&destination=${restaurant.urlName}%2CChicago%2CIL`,
+            "_blank",
+            "noreferrer"
+          )
+        }
+      />
     </GoogleMap>
   ) : (
     <></>
