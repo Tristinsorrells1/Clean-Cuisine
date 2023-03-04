@@ -4,5 +4,16 @@ body {
   width: 100vw;
 }
 
+button, 
+.filter-button {
+  background-color: rgb(247, 111, 111);
+  border: none;
+  color: rgb(6, 19, 118);
+}
+
+button:active, 
+.filter-button:active {
+  transform: scale(0.8);
+}
 
 
