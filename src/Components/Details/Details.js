@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import Maps from "./Maps"
 
+
 const Details = (  ) => {
   const params = useParams()
   const [restaurant, setRestaurant] = useState("")
@@ -14,7 +15,25 @@ useState(() => {
    let match = results.find((result) => result.license === params.id)
    setRestaurant(match)
    
+}, [params.id]);
+
+useEffect(() => {
+  window.addEventListener("message", handleMessage);
+
+  return () => {
+    window.removeEventListener("message", handleMessage);
+  };
 }, []);
+
+const handleMessage = (event) => {
+  if (event.origin === "https://www.yelp.com" && event.data === "setCookie") {
+    document.cookie = "cookieName=cookieValue; SameSite=None; Secure";
+  }
+};
+
+const setCookie = () => {
+  window.top.postMessage("setCookie", "https://www.yelp.com");
+};
 
   return (
     <>
@@ -53,11 +72,12 @@ useState(() => {
           <div className="yelp-header">Yelp Reviews</div>
         </div>
         {restaurant && (
-            <iframe
-              src={`https://www.yelp.com/search?find_desc=${restaurant.urlName}+&find_loc=Chicago%2C+IL+${restaurant.zip}`}
-              className="yelp-iframe"
-            ></iframe>
-          )}
+          <iframe
+            src={`https://www.yelp.com/search?find_desc=${restaurant.urlName}+&find_loc=Chicago%2C+IL+${restaurant.zip}`}
+            className="yelp-iframe"
+            onLoad={setCookie}
+          ></iframe>
+        )}
       </section>
     </>
   );
