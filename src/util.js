@@ -51,3 +51,19 @@ export const cleanData = (results) => {
     };
   });
 };
+
+export const formatViolations = (restaurant) => {
+  let comments;
+  if (restaurant && restaurant.violations !== "No Violations") {
+    console.log(restaurant.violations);
+    comments = restaurant.violations.split("- Comments:").join("|").split("|");
+
+    console.log(comments);
+    return comments.map((comment) => {
+      return <p className="violation-comment">{comment}</p>;
+    });
+  } else if (restaurant) {
+    comments = restaurant.violations;
+    return <p className="violation-comment">{comments}</p>;
+  }
+};

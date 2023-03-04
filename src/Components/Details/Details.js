@@ -3,6 +3,7 @@ import "./Details.css";
 import { useParams } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import Maps from "./Maps"
+import { formatViolations } from '../../util'
 
 const Details = (  ) => {
   const params = useParams()
@@ -14,24 +15,6 @@ useState(() => {
    setRestaurant(match)
    
 }, [])
-
-const formatViolations = () => {
-  let comments
-  if (restaurant && restaurant.violations !== "No Violations") {
-    console.log(restaurant.violations)
-    comments = restaurant.violations.split("- Comments:").join("|").split("|")
-    
-  
-    console.log(comments)
-    return comments.map((comment) => {
-      return <p className="violation-comment">{comment}</p>
-    })
-  }
-  else if (restaurant) {
-    comments = restaurant.violations
-      return <p className="violation-comment">{comments}</p>;
-  }
-}
 
   return (
     <>
@@ -74,7 +57,7 @@ const formatViolations = () => {
 
         <div>
           <div className="violation-header">Violations</div>
-          <div className="violation-details">{formatViolations()}</div>
+          <div className="violation-details">{formatViolations(restaurant)}</div>
         </div>
 
         <div className="yelp-container">
