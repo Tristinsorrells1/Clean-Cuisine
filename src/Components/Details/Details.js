@@ -51,7 +51,7 @@ const Details = () => {
           <div className="inspection-details">
             <p className="date">{`Date of Inspection: ${restaurant.date}`}</p>
             <p className="risk">{`${restaurant.risk}`}</p>
-            <p className="result">{`Result: ${restaurant.result}`}</p>
+            <div className="result">{`Result: ${restaurant.result}`}
             {(restaurant.result === "Pass" ||
               restaurant.result === "Pass w/ Conditions") && (
                 <img
@@ -69,6 +69,7 @@ const Details = () => {
                   src="../../../Assets/warning.png"
                 ></img>
               )}
+            </div>
           </div>
         </div>
 

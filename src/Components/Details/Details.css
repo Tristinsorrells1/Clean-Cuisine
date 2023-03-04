@@ -43,6 +43,11 @@
   margin: 0;
 }
 
+.result {
+  display: flex;
+  align-items: center;
+}
+
 .inspection-results-header,
 .violation-header,
 .yelp-header {

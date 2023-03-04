@@ -1,6 +1,7 @@
 .results-container {
   margin: 3vh;
-  height: 60vh;
+  height: fit-content;
+  max-height: 60vh;
   width: 60vw;
   overflow-y: auto;
 }
