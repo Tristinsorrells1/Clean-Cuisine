@@ -7,14 +7,30 @@ import Maps from "./Maps"
 const Details = (  ) => {
   const params = useParams()
   const [restaurant, setRestaurant] = useState("")
- 
 
 useState(() => {
    const results = JSON.parse(localStorage.getItem("results"));
    let match = results.find((result) => result.license === params.id)
    setRestaurant(match)
    
-}, []);
+}, [])
+
+const formatViolations = () => {
+  let comments
+  if (restaurant && restaurant.violations !== "No Violations") {
+    console.log(restaurant.violations)
+    comments = restaurant.violations.split("- Comments:")
+    comments[0] = `Violation #${comments[0]}`
+    console.log(comments)
+    return comments.map((comment) => {
+      return <p className="violation-comment">{comment}</p>
+    })
+  }
+  else if (restaurant) {
+    comments = restaurant.violations
+      return <p>{comments}</p>;
+  }
+}
 
   return (
     <>
@@ -45,19 +61,19 @@ useState(() => {
         <div>
           <div className="violation-header">Violations</div>
           <div className="violation-details">
-            <p className="date">{restaurant.violations}</p>
+           {formatViolations()}
           </div>
         </div>
 
         <div className="yelp-container">
           <div className="yelp-header">Yelp Reviews</div>
         </div>
-        {restaurant && (
+        {/* {restaurant && (
             <iframe
               src={`https://www.yelp.com/search?find_desc=${restaurant.urlName}+&find_loc=Chicago%2C+IL+${restaurant.zip}`}
               className="yelp-iframe"
             ></iframe>
-          )}
+          )} */}
       </section>
     </>
   );

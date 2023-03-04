@@ -33,7 +33,6 @@
 }
 
 .inspection-details,
-.violation-details,
 .yelp-container {
   display: flex;
   justify-content: space-evenly;
@@ -42,6 +41,23 @@
   margin-left: auto;
   border: 2px solid green;
 }
+
+.violation-details {
+  display: flex;
+  flex-direction: column;
+  width: 70vw;
+  margin-right: auto;
+  margin-left: auto;
+  height: 40vh;
+  overflow-y: auto;
+}
+
+.violation-comment {
+  border: 2px solid black;
+  text-align: center;
+  width: 65vw;
+}
+
 
 .yelp-placeholder {
   height: 20vh;

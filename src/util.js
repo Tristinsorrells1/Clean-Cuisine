@@ -4,6 +4,9 @@ export const reformatDate = (date) => {
 }
 
 export const removeAllCaps = (name) => {
+  if (!name) {
+    return "No Violations"
+  }
   return name
     .split(" ")
     .map((item) => item.charAt(0).toUpperCase() + item.slice(1).toLowerCase())
@@ -41,7 +44,7 @@ export const cleanData = (results) => {
       zip: data.zip,
       date: reformatDate(data["inspection_date"]),
       result: data.results,
-      violations: data.violations || "No Violations",
+      violations: removeAllCaps(data.violations),
       latitude: Number(data.latitude),
       longitude: Number(data.longitude),
       urlName: removeAllCaps(data["dba_name"]).replaceAll(" ", "+"),
