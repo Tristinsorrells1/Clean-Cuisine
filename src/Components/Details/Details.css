@@ -36,7 +36,7 @@
 
 .address-and-iframe-container {
   display: flex;
-  height: 45vh;
+  /* height: 45vh; */
   justify-content: center;
   width: 100%;
   margin: 3vw;
