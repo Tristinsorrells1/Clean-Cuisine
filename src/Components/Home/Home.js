@@ -148,7 +148,6 @@ let filterResultDisplay = (value) => {
         <Results
           filterResultDisplay={filterResultDisplay}
           filterResults={filterResults}
-          results={results}
         />
       )}
       {isLoading && (
