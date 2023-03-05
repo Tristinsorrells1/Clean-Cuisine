@@ -6,6 +6,7 @@
   overflow-y: scroll;
 }
 
+
 .results-container::-webkit-scrollbar {
   width: 1em;
 }

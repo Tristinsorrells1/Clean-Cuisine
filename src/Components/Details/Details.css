@@ -131,10 +131,6 @@ li {
   background-color: grey;
 }
 
-.map {
-  height: 40vh;
-  width: 40vw;
-}
 
 .yelp-iframe {
   height: 35vh;
@@ -176,10 +172,7 @@ li {
 
   }
 
-  .map {
-    height: 100vh;
-    width: 60vw;
-  }
+ 
 
   .date {
     text-align: center;
