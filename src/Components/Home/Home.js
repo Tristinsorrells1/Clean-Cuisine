@@ -20,7 +20,7 @@ useEffect(() => {
   localStorage.setItem("invalidZip", JSON.stringify(invalidZip))
   localStorage.setItem("name", JSON.stringify(name));
   localStorage.setItem("zipcode", JSON.stringify(zipcode))
-}, [results]);
+}, [results, invalidZip, name, zipcode]);
 
 useEffect(() => {
   if (invalidZip || !name) {
@@ -28,7 +28,6 @@ useEffect(() => {
     setNoMatches("")
   }
 }, [invalidZip, name]);
-
 
 useState(() => {
   const results = JSON.parse(localStorage.getItem("results"))

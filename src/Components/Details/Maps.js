@@ -1,17 +1,16 @@
-import { React,  useState, useCallback } from "react";
+import { React } from "react";
 import "./Details.css";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
+import PropTypes from "prop-types";
 
+const Maps = ({ restaurant }) => {
+ 
+  const containerStyle = {
+    width: "100%",
+    height: "100%",
+    borderRadius: "15px",
+  };
 
-const containerStyle = {
-  width: "100%",
-  height: "100%",
-  borderRadius: "15px",
-};
-
-export default function Maps({ restaurant }) {
-
-  const [map, setMap] = useState(null);
   const center = { lat: restaurant.latitude, lng: restaurant.longitude };
 
   const { isLoaded } = useJsApiLoader({
@@ -19,14 +18,10 @@ export default function Maps({ restaurant }) {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
   });
 
-  const onLoad = useCallback((map) => {
-    setMap(map);
-  }, []);
-
   return isLoaded && (
     <GoogleMap
       mapContainerStyle={containerStyle}
-      onLoad={onLoad}
+      // onLoad={onLoad}
       zoom={15}
       center={center}
       options={{
@@ -47,3 +42,9 @@ export default function Maps({ restaurant }) {
     </GoogleMap>
   ) 
 }
+
+export default Maps;
+
+Maps.propTypes = {
+  restaurant: PropTypes.object.isRequired,
+};

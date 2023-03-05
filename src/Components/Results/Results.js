@@ -1,6 +1,7 @@
 import { React} from "react";
 import ResultCard from "../ResultCard/ResultCard";
-import "./Results.css"
+import "./Results.css";
+import PropTypes from "prop-types";
 
 const Results = ({ results, filterResults, filterResultDisplay }) => {
 
@@ -53,3 +54,9 @@ const Results = ({ results, filterResults, filterResultDisplay }) => {
 };
 
 export default Results;
+
+Results.propTypes = {
+  results: PropTypes.array.isRequired,
+  filterResults: PropTypes.array,
+  filterResultDisplay: PropTypes.func.isRequired
+};
