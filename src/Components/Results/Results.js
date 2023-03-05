@@ -4,6 +4,7 @@ import "./Results.css";
 import PropTypes from "prop-types";
 
 const Results = ({ filterResults, filterResultDisplay }) => {
+  console.log("FR", filterResults)
 
   let cards = filterResults.map((result) => {
     return (
