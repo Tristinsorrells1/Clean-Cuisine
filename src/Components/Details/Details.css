@@ -3,7 +3,6 @@
   width: 95vw;
   margin-right: auto;
   margin-left: auto;
-  /* height: 100vh; */
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -36,7 +35,6 @@
 
 .address-and-iframe-container {
   display: flex;
-  /* height: 45vh; */
   justify-content: center;
   width: 100%;
   margin: 3vw;
@@ -119,7 +117,6 @@ li {
   align-items: center;
 }
 
-
 .violation-details {
   display: flex;
   flex-direction: column;
@@ -148,18 +145,11 @@ li {
 }
 
 .yelp-iframe {
-  height: 30vh;
+  height: 60vh;
   width: 100%;
   transform: scale(0.5);
   zoom: 3;
-  margin-top: -7vh;
-}
-
-.yelp-container {
-  height: 35vh;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 1vh;
+  margin-top: -15vh;
 }
 
 @media only screen and (max-width: 485px) {
@@ -221,9 +211,9 @@ li {
     font-size: 5.5vw;
   }
 
-  .directions-button {
+   .directions-button {
     margin: 0;
-  }
+  } 
 
   h2 {
     font-size: 15px;
@@ -236,7 +226,6 @@ li {
 
   .address-and-iframe-container {
     flex-direction: column;
-
   }
 
   .date {
@@ -249,5 +238,4 @@ li {
     margin: 0;
     font-size: 6vw;
   }
-
 }
