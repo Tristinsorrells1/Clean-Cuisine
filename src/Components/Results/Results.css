@@ -1,7 +1,24 @@
 .results-container {
   margin: 3vh;
-  height: 60vh;
+  height: fit-content;
+  max-height: 60vh;
   width: 60vw;
   overflow-y: auto;
 }
 
+button,
+.filter-button {
+  background-color: rgb(247, 111, 111);
+  border: 1px solid rgb(6, 19, 118);
+  color: rgb(6, 19, 118);
+  border-radius: 10px;
+}
+
+button:active,
+.filter-button:active {
+  transform: scale(0.8);
+}
+
+input {
+  border: 1px solid rgb(6, 19, 118);
+}

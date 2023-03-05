@@ -1,24 +1,83 @@
 .details-section {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  border: 2px solid black;
+  border: 2px solid rgb(6, 19, 118);
+  width: 95vw;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.back-button {
+  margin: 1vh;
+}
+
+.warning-icon,
+.fail-icon,
+.check-icon {
+  height: 4.5vh;
+  width: 3vw;
+  margin: .5vw;
 }
 
 .address-and-iframe-container {
   display: flex;
   height: 45vh;
   justify-content: center;
-  width: 100vw;
+  width: 100%;
+  margin: 3vw;
+  align-items: center;
+}
+
+.address-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .name-and-address-container {
   display: flex;
   flex-direction: column;
-  border: 2px solid black;
-  height: 40vh;
+  border: 2px solid rgb(6, 19, 118);
+  height: fit-content;
   align-items: center;
-  margin-right: 3vw;
+  justify-content: center;
+  margin: 3vw;
+  border-radius: 10px;
+  width: 20vw;
+  min-width: fit-content;
+}
+
+.directions-button {
+  margin: 2vh;
+}
+
+.street,
+.city,
+.zip {
+  margin: 0;
+}
+
+.result,
+.risk-level {
+  display: flex;
+  align-items: center;
+}
+
+#riskExplaination,
+.risk:hover .risk-level {
+  display: none;
+}
+
+.risk:hover #riskExplaination{
+  display: block;
+  width: 30vw;
+}
+
+li {
+  margin: 1vh;
+}
+
+.info-icon {
+  height: 5vh;
 }
 
 .inspection-results-header,
@@ -29,18 +88,41 @@
   margin-right: auto;
   margin-left: auto;
   background-color: rgb(244, 111, 111);
-  font-size: 3.5vh;
+  font-size: 2.5vh;
+  display: flex;
+  align-items: center;
 }
 
 .inspection-details,
-.violation-details,
 .yelp-container {
   display: flex;
   justify-content: space-evenly;
   width: 70vw;
   margin-right: auto;
   margin-left: auto;
-  border: 2px solid green;
+  align-items: center;
+}
+
+.violation-details {
+  display: flex;
+  flex-direction: column;
+  width: 70vw;
+  margin-right: auto;
+  margin-left: auto;
+  height: fit-content;
+  max-height: 30vh;
+  overflow-y: auto;
+}
+
+.violation-comment {
+  border: 2px solid rgb(6, 19, 118);
+  text-align: center;
+  width: 65vw;
+}
+
+.violation-comment:nth-child(odd) {
+  font-weight: bold;
+  border: none;
 }
 
 .yelp-placeholder {
@@ -64,4 +146,106 @@
   margin-top: -8vh;
   display: flex;
   align-self: center;
+}
+
+@media only screen and (max-width: 485px) {
+  .inspection-details {
+    flex-direction: column;
+  }
+
+  .check-icon,
+  .fail-icon,
+  .info-icon,
+  .warning-icon {
+    height: 3vh;
+    width: 5vw;
+  }
+
+  .name-and-address-container {
+    height: fit-content;
+    width: 50vw;
+    font-size: 3vw;
+  }
+
+  .violation-comment {
+    font-size: 3vw;
+  }
+
+  .address-and-iframe-container {
+    flex-direction: column;
+
+  }
+
+  .map {
+    height: 100vh;
+    width: 60vw;
+  }
+
+  .date {
+    text-align: center;
+  }
+
+  .date,
+  .risk-level,
+  .result {
+    margin: 1vw;
+    font-size: 3.5vw;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .inspection-details {
+    flex-direction: column;
+  }
+
+  .check-icon,
+  .fail-icon,
+  .info-icon,
+  .warning-icon {
+    height: 4vh;
+    width: 9vw;
+    margin: 2vh;
+  }
+
+  .name-and-address-container {
+    height: fit-content;
+    width: 70vw;
+    font-size: 5.5vw;
+  }
+
+  .directions-button {
+    /* padding: 0; */
+    margin: 0;
+  }
+
+  h2 {
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .violation-comment {
+    font-size: 5vw;
+  }
+
+  .address-and-iframe-container {
+    flex-direction: column;
+
+  }
+
+  .map {
+    height: 100vh;
+    width: 60vw;
+  }
+
+  .date {
+    text-align: center;
+  }
+
+  .date,
+  .risk-level,
+  .result {
+    margin: 0;
+    font-size: 6vw;
+  }
+
 }

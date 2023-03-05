@@ -103,7 +103,7 @@ let filterResultDisplay = (value) => {
 
   return (
     <section className="home-section">
-      <p>Search for a Restaurant by Name and Zipcode</p>
+      <p>Search for a Restaurant in Chicago by Name and Zipcode</p>
       <form>
         <input
           type="number"
@@ -127,13 +127,13 @@ let filterResultDisplay = (value) => {
       {checkInputs && invalidZip && (
         <div className="error-container">
           <p className="form-error">Error - Invalid Zipcode</p>
-          <p>Please enter a valid zipcode before searching.</p>
+          <p>Please Enter a Valid Zipcode</p>
         </div>
       )}
       {checkInputs && !name.trim() && (
         <div className="error-container">
           <p className="form-error">Error - Missing Inputs</p>
-          <p>Please enter a Restaurant name</p>
+          <p>Please Enter At Least One Character to Search</p>
         </div>
       )}
       {results.length > 0 && (
