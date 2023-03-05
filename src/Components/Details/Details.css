@@ -142,14 +142,14 @@ li {
   border: none;
 }
 
-
 .map {
-  height: 40vh;
+  height: 30vh;
   width: 40vw;
 }
 
 .yelp-iframe {
   height: 30vh;
+  width: 100%;
   transform: scale(0.5);
   zoom: 3;
   margin-top: -7vh;
