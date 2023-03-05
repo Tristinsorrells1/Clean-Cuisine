@@ -1,6 +1,6 @@
 .home-section {
-  height: 80vh;
-  width: 50vw;
+  height: fit-content;
+  /* width: 50vw; */
   border: 1px solid grey;
   width: 60vw;
   margin-right: auto;
@@ -28,4 +28,21 @@ input {
   border: 2px solid red;
   align-items: center;
   border-radius: 5px;
+}
+
+@media only screen and (max-width: 670px) {
+  form {
+    display: flex;
+    flex-direction: column;
+    margin: 1vh;
+  }
+
+  h1 {
+    font-size: 3vh;
+  }
+
+  .stars-icon {
+    width: 35vw;
+  }
+
 }

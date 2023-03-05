@@ -16,23 +16,23 @@ const ResultCard = ({  name, risk, address, city, zip, date, result, violations,
             <p className="card-result">{result}</p>
           </div>
           {result.includes("Pass") && (
-            <img className="check-icon" src="../../../Assets/check.png"></img>
+            <img className="check" src="../../../Assets/check.png"></img>
           )}
           {result.includes("No Entry") && (
             <img
-              className="warning-icon"
+              className="warning"
               src="../../../Assets/warning.png"
             ></img>
           )}
           {result.includes("Not Ready") && (
             <img
-              className="warning-icon"
+              className="warning"
               src="../../../Assets/warning.png"
             ></img>
           )}
           {result.includes("Fail") && (
             <img
-              className="fail-icon"
+              className="fail"
               src="../../../Assets/x-mark.png"
             ></img>
           )}

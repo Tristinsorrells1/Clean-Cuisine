@@ -18,7 +18,7 @@ const Details = () => {
   return (
     <>
       <NavLink to={"/"}>
-        <button>Back to Results</button>
+        <button className="back-button">Back to Results</button>
       </NavLink>
       <section className="details-section">
         <div className="address-and-iframe-container">
@@ -33,7 +33,7 @@ const Details = () => {
               className="directions-button"
               onClick={() =>
                 window.open(
-                  `https://www.google.com/maps/dir/?api=1&destination=${restaurant.urlName}%2CChicago%2CIL`,
+                  `https://www.google.com/maps/dir/?api=1&destination=${restaurant.urlName}%2C${restaurant.city}%2CIL`,
                   "_blank",
                   "noreferrer"
                 )

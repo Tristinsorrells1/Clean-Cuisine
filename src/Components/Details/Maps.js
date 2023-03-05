@@ -23,7 +23,7 @@ export default function Maps({ restaurant }) {
     setMap(map);
   }, []);
 
-  return isLoaded ? (
+  return isLoaded && (
     <GoogleMap
       mapContainerStyle={containerStyle}
       onLoad={onLoad}
@@ -38,14 +38,12 @@ export default function Maps({ restaurant }) {
         title={restaurant.name}
         onClick={() =>
           window.open(
-            `https://www.google.com/maps/dir/?api=1&destination=${restaurant.urlName}%2CChicago%2CIL`,
+            `https://www.google.com/maps/dir/?api=1&destination=${restaurant.urlName}%2C${restaurant.city}%2CIL`,
             "_blank",
             "noreferrer"
           )
         }
       />
     </GoogleMap>
-  ) : (
-    <></>
-  );
+  ) 
 }
