@@ -148,18 +148,19 @@ li {
 }
 
 .yelp-iframe {
-  height: 30vh;
+  height: 60vh;
   width: 100%;
   transform: scale(0.5);
   zoom: 3;
-  margin-top: -7vh;
+  margin-top: -15vh;
 }
 
 .yelp-container {
-  height: 50vh;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 1vh;
+  /* height: 80vh; */
+  /* height: fit-content; */
+  /* margin-right: auto; */
+  /* margin-left: auto; */
+  /* margin-top: 1vh; */
 }
 
 @media only screen and (max-width: 485px) {
