@@ -153,10 +153,10 @@ let filterResultDisplay = (value) => {
       )}
       {isLoading && (
         <img
-          src="/assets/spinnerblue.gif"
-          alt="loading"
+          src="/assets/Spinner.gif"
+          alt="loading..."
           className="loading-spinner"
-        />
+        /> 
       )}
       {noMatches && <p>No Matches</p>}
       {error && (<div className="error-container"> 
