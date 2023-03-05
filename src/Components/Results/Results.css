@@ -22,3 +22,10 @@ button:active,
 input {
   border: 1px solid rgb(6, 19, 118);
 }
+
+@media only screen and (max-width: 345px) {
+
+  .results-container {
+    width: fit-content;
+  }
+}
