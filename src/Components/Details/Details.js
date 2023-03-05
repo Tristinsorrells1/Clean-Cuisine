@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState} from "react";
 import "./Details.css";
 import { useParams } from "react-router-dom";
 import { NavLink } from "react-router-dom";
@@ -52,10 +52,11 @@ const Details = () => {
             <p className="date">{`Date of Inspection: ${restaurant.date}`}</p>
             <div className="risk">
               <div className="risk-level">
-                <a> {restaurant.risk}</a>
+                <span> {restaurant.risk}</span>
                 <img
                   className="info-icon"
                   src="../../../Assets/info-icon.png"
+                  alt="info icon"
                 ></img>
               </div>
               <div id="riskExplaination">
@@ -76,12 +77,14 @@ const Details = () => {
                 <img
                   className="check-icon"
                   src="../../../Assets/check.png"
+                  alt="check icon"
                 ></img>
               )}
               {restaurant.result === "Fail" && (
                 <img
                   className="fail-icon"
                   src="../../../Assets/x-mark.png"
+                  alt="fail icon"
                 ></img>
               )}
               {(restaurant.result === "Not Ready" ||
@@ -89,26 +92,25 @@ const Details = () => {
                 <img
                   className="warning-icon"
                   src="../../../Assets/warning.png"
+                  alt="warning icon"
                 ></img>
               )}
             </div>
           </div>
-        </div>
-
-           
+        </div> 
         <div>
           <div className="violation-header">Violations</div>
           <div className="violation-details">
             {formatViolations(restaurant)}
           </div>
         </div>
-
         <div className="yelp-container">
           <div className="yelp-header">Yelp Reviews</div>
         </div>
         {/* {restaurant && (
             <iframe
               src={`https://www.yelp.com/search?find_desc=${restaurant.urlName}+&find_loc=Chicago%2C+IL+${restaurant.zip}`}
+              alt="Yelp iframe"
               className="yelp-iframe"
             ></iframe>
           )} */}
