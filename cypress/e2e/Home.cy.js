@@ -1,5 +1,4 @@
 import stubbedResults from "../fixtures/stubbedResults";
-import getRestaurants from "../../src/APICalls"
 
 describe("Home", () => {
   beforeEach(() => {

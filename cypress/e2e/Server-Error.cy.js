@@ -1,7 +1,4 @@
-import stubbedResults from "../fixtures/stubbedResults";
-import getRestaurants from "../../src/APICalls";
-
-describe("Home", () => {
+describe("Server Error", () => {
   beforeEach(() => {
     cy.intercept(
       {
