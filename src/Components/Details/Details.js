@@ -13,7 +13,6 @@ const Details = () => {
   useEffect(() => {
     const results = JSON.parse(localStorage.getItem("results"));
     let match = results.find((result) => result.license === params.id);
-    console.log(match)
     if (!match) {
       navigate('/error')
     }
@@ -110,7 +109,7 @@ const Details = () => {
           </div>
         </div>
         <div className="yelp-header">Yelp Reviews</div>
-        {restaurant && (
+        {/* {restaurant && (
           <div className="yelp-container">
             <iframe
               src={`https://www.yelp.com/search?find_desc=${restaurant.urlName}+&find_loc=Chicago%2C+IL+${restaurant.zip}`}
@@ -119,7 +118,7 @@ const Details = () => {
               title="yelp-iframe"
             ></iframe>
           </div>
-          )}
+          )} */}
       </section>
     </>
   );

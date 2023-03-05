@@ -7,6 +7,7 @@
   background-color: rgb(223, 209, 209);
   align-items: center
 }
+
 .NavLink {
   text-decoration: none;
   color: black;
@@ -21,7 +22,7 @@
 }
 
 .name-container {
-  width: 25vw;
+  width: 40vw;
 }
 
 .result-container {
@@ -40,15 +41,13 @@
 
 @media only screen and (max-width: 670px) {
   .result-card {
-    height: 8vh;
     font-size: 2vh;
     width: 55vw;
   }
 
   .card-name {
     text-align: center;
-    padding: 0;
-    margin: 0;
+    height: fit-content;
   }
 
   .card-result,
@@ -67,8 +66,32 @@
   .info,
   .warning {
     height: 3vh;
-    margin: 2vh;
+    width: 4vw;
   }
-
 }
 
+@media only screen and (max-width: 305px) {
+  .result-card {
+    font-size: 1.75vh;
+  }
+
+  .check,
+  .fail,
+  .info,
+  .warning {
+    width: 5vw;
+  }
+}
+
+  @media only screen and (max-width: 260px) {
+  .result-card {
+    font-size: 1.65vh;
+  }
+
+  .check,
+  .fail,
+  .info,
+  .warning {
+    width: 4vw;
+  }
+}

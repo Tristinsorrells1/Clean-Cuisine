@@ -6,9 +6,9 @@
   overflow-y: scroll;
 }
 
-
 .results-container::-webkit-scrollbar {
-  width: 1em;
+  width: 1vw;
+  margin: 1vw;
 }
 
 .results-container::-webkit-scrollbar-track {
