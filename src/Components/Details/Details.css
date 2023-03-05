@@ -3,7 +3,7 @@
   width: 95vw;
   margin-right: auto;
   margin-left: auto;
-  height: 100vh;
+  /* height: 100vh; */
   overflow-y: scroll;
   overflow-x: hidden;
 }
