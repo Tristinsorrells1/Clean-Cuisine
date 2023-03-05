@@ -4,7 +4,7 @@ export const getRestaurants = async (zipcode) => {
     const response = await fetch(url);
     if (!response.ok) {
       console.log("response not okay", response);
-      return
+      return response.statusText
     }
     else {
       return response.json()
