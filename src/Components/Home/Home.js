@@ -153,7 +153,7 @@ let filterResultDisplay = (value) => {
       )}
       {isLoading && (
         <img
-          src="/assets/Eclipse.gif"
+          src="/assets/Spinner.gif"
           alt="loading"
           className="loading-spinner"
         />
