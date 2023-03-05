@@ -118,5 +118,4 @@ describe("Home", () => {
 
     cy.get("section[class='details-section']").should("be.visible");
   });
-
 });
