@@ -112,13 +112,14 @@ const Details = () => {
         <div className="yelp-container">
           <div className="yelp-header">Yelp Reviews</div>
         </div>
-        {/* {restaurant && (
+        {restaurant && (
             <iframe
               src={`https://www.yelp.com/search?find_desc=${restaurant.urlName}+&find_loc=Chicago%2C+IL+${restaurant.zip}`}
               alt="Yelp iframe"
               className="yelp-iframe"
+              title="yelp-iframe"
             ></iframe>
-          )} */}
+          )}
       </section>
     </>
   );
