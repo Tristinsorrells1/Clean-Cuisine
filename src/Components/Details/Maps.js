@@ -21,7 +21,7 @@ const Maps = ({ restaurant }) => {
   return isLoaded && (
     <GoogleMap
       mapContainerStyle={containerStyle}
-      // onLoad={onLoad}
+      aria-label="Map"
       zoom={15}
       center={center}
       options={{
