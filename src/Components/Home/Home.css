@@ -37,6 +37,10 @@ input {
     margin: 1vh;
   }
 
+  .home-section {
+    width: 80vw;
+  }
+  
   h1 {
     font-size: 3vh;
   }

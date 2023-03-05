@@ -5,11 +5,9 @@ import PropTypes from "prop-types";
 
 const Results = ({ results, filterResults, filterResultDisplay }) => {
 
-  if (filterResults !== 0) {
-    results = filterResults
-  }
+   const filteredResults = filterResults.length ? filterResults : results;
 
-  let cards = filterResults.map((result) => {
+  let cards = filteredResults.map((result) => {
     return (
       <ResultCard
         name={result["name"]}

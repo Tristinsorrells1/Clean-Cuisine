@@ -1,19 +1,24 @@
-import { React, useState} from "react";
+import { React, useEffect, useState} from "react";
 import "./Details.css";
 import { useParams } from "react-router-dom";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Maps from "./Maps";
 import { formatViolations } from "../../util";
 
 const Details = () => {
   const params = useParams();
   const [restaurant, setRestaurant] = useState("");
+  const navigate = useNavigate();
 
-  useState(() => {
+  useEffect(() => {
     const results = JSON.parse(localStorage.getItem("results"));
     let match = results.find((result) => result.license === params.id);
+    console.log(match)
+    if (!match) {
+      navigate('/error')
+    }
     setRestaurant(match);
-  }, []);
+  }, [navigate, params.id]);
 
   return (
     <>

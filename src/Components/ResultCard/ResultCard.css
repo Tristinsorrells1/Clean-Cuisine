@@ -40,9 +40,9 @@
 
 @media only screen and (max-width: 670px) {
   .result-card {
-   height: 10vh;
-   min-height: fit-content;
-   font-size: 2vh;
+    height: 8vh;
+    font-size: 2vh;
+    width: 55vw;
   }
 
   .card-name {
@@ -62,12 +62,13 @@
     margin-left: auto;
   }
 
-    .check,
-    .fail,
-    .info,
-    .warning {
-      height: 3vh;
-      margin: 2vh;
-    }
+  .check,
+  .fail,
+  .info,
+  .warning {
+    height: 3vh;
+    margin: 2vh;
+  }
 
 }
+

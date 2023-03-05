@@ -14,6 +14,7 @@ const Home = () => {
   const [filterResults, setFilterResults] = useState([])
   const [noMatches, setNoMatches] = useState("")
   const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState("")
 
 useEffect(() => {
   localStorage.setItem("results", JSON.stringify(results))
@@ -26,6 +27,7 @@ useEffect(() => {
   if (invalidZip || !name) {
     setResults([])
     setNoMatches("")
+    setError("")
   }
 }, [invalidZip, name]);
 
@@ -56,8 +58,15 @@ let findRestaurants = () => {
   setIsLoading(true)
   getRestaurants(zipcode)
   .then((results) => {
-    let searchResults = results.filter((data) => data["dba_name"].includes(name.toUpperCase()));
-    setResultsInState(searchResults)
+    if (typeof results === "string") {
+      setError(results)
+      setIsLoading(false)
+    }
+    else {
+      let searchResults = results.filter((data) => data["dba_name"].includes(name.toUpperCase()));
+      setResultsInState(searchResults)
+      setError("")
+    }
   })
 }
 
@@ -65,7 +74,7 @@ let setResultsInState = (results) => {
   let filteredResults = removeDuplicates(results)
   setResults(cleanData(filteredResults))
   setFilterResults(cleanData(filteredResults))
-  setIsLoading(false);
+  setIsLoading(false)
   if (results.length === 0) {
     setNoMatches(true)
   } else {
@@ -150,6 +159,10 @@ let filterResultDisplay = (value) => {
         />
       )}
       {noMatches && <p>No Matches</p>}
+      {error && (<div className="error-container"> 
+        <p>We are having server issues, please try again later</p>
+        <p>Error: {error}</p>
+      </div>)}
     </section>
   );
 };

@@ -1,0 +1,12 @@
+.error-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 30vh;
+  width: 45vw;
+  margin-right: auto;
+  margin-left: auto;
+  border: 2px solid rgb(6, 19, 118);
+  margin-top: 20vh;
+}
