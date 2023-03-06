@@ -26,6 +26,7 @@ useEffect(() => {
 useEffect(() => {
   if (invalidZip || !name) {
     setResults([])
+    setFilterResults([])
     setNoMatches("")
     setError("")
   }
