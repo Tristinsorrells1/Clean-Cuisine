@@ -57,8 +57,8 @@
   justify-content: center;
   margin: 3vw;
   border-radius: 10px;
-  width: 20vw;
-  min-width: fit-content;
+  width: 30vw;
+  text-align: center;
 }
 
 .directions-button {
@@ -171,6 +171,10 @@ li {
     font-size: 3vw;
   }
 
+  .map {
+    width: 50vw;
+  }
+
   .violation-comment {
     font-size: 3vw;
   }
@@ -192,50 +196,23 @@ li {
 }
 
 @media only screen and (max-width: 300px) {
-  .inspection-details {
-    flex-direction: column;
-  }
-
   .check-icon,
   .fail-icon,
   .info-icon,
   .warning-icon {
-    height: 4vh;
-    width: 9vw;
-    margin: 2vh;
-  }
-
-  .name-and-address-container {
-    height: fit-content;
-    width: 70vw;
-    font-size: 5.5vw;
-  }
-
-   .directions-button {
-    margin: 0;
-  } 
-
-  h2 {
-    font-size: 15px;
-    text-align: center;
+    height: 3vh;
+    width: 6vw;
+    margin: .5vh;
   }
 
   .violation-comment {
-    font-size: 5vw;
-  }
-
-  .address-and-iframe-container {
-    flex-direction: column;
-  }
-
-  .date {
-    text-align: center;
+    font-size: 4vw;
+    margin: .5vh;
   }
 
   .date,
   .risk-level,
   .result {
-    margin: 0;
-    font-size: 6vw;
+    font-size: 4vw;
   }
 }
