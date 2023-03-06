@@ -2,7 +2,6 @@ import { React } from "react";
 import { NavLink} from "react-router-dom";
 import "./Error.css"
 
-
 const Error = () => {
  
   return (
@@ -17,5 +16,3 @@ const Error = () => {
 };
 
 export default Error;
-
-

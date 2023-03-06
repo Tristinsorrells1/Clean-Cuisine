@@ -21,7 +21,7 @@ describe("Details", () => {
   });
 
   it("Should display the site title and logo", () => {
-    cy.get("h1").should("contain", "Clean Cuisine");
+    cy.get("h1").should("contain", "Clean Cuisine Chi");
     cy.get("img[class='stars-icon']").should("be.visible");
   });
 

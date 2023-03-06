@@ -1,6 +1,5 @@
 .home-section {
   height: fit-content;
-  /* width: 50vw; */
   border: 1px solid grey;
   width: 60vw;
   margin-right: auto;
@@ -13,7 +12,6 @@
 input {
   margin: 1vh;
 }
-
 
 .form-error {
   color: red;
@@ -30,17 +28,26 @@ input {
   border-radius: 5px;
 }
 
-@media only screen and (max-width: 670px) {
+@media only screen and (max-width: 790px) {
+  .home-section {
+      width: 80vw;
+    }
+
   form {
     display: flex;
     flex-direction: column;
     margin: 1vh;
+    align-self: center;
   }
 
-  .home-section {
-    width: 80vw;
+  button,
+  .filter-button {
+    width: 30vw;
+    min-width: 180px;
   }
-  
+}
+
+@media only screen and (max-width: 670px) {
   h1 {
     font-size: 3vh;
   }
@@ -48,5 +55,4 @@ input {
   .stars-icon {
     width: 35vw;
   }
-
 }
