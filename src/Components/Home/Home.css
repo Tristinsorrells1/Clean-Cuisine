@@ -13,6 +13,11 @@ input {
   margin: 1vh;
 }
 
+.search-explaination {
+  text-align: center;
+  display: flex;
+}
+
 .form-error {
   color: red;
 }

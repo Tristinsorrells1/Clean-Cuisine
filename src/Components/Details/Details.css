@@ -102,6 +102,7 @@ li {
   height: 5vh;
   margin-right: auto;
   margin-left: auto;
+  margin-top: 1vh;
   background-color: rgb(6, 19, 118);
   color: rgb(223, 209, 209);
   font-size: 2.5vh;
@@ -128,7 +129,7 @@ li {
   margin-left: auto;
   height: fit-content;
   max-height: 30vh;
-  overflow-y: auto;
+  overflow-y: scroll;
 }
 
 .violation-comment {
@@ -147,17 +148,9 @@ li {
   width: 40vw;
 }
 
-.yelp-iframe {
-  height: 60vh;
-  width: 100%;
-  transform: scale(0.5);
-  zoom: 3;
-  margin-top: -15vh;
-}
-
 .yelp-button {
   width: 20vw;
-  margin-top: 1vh;
+  margin-top: 2vh;
   display: block;
   text-align: center;
   margin-right: auto;
