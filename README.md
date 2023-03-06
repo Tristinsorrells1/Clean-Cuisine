@@ -5,9 +5,9 @@
 
 [//]: <> (Briefly describe what you built and its features. What problem is the app solving? How does this application solve that problem?)
 
-Have you ever felt skeeved out while at a restaurant? Maybe your plate was a little dirty, or the floors felt sticky. My app is designed to simplify finding a clean, satisfactory place to eat by providing users with an establishments latest health inspection results, google map directions, and yelp reviews.
+Have you ever felt skeeved out while at a restaurant? Maybe your plate was a little dirty, or the floors felt sticky. My app is designed to simplify finding a clean, satisfactory place to eat by providing users with an establishment's latest health inspection results, google map directions, and yelp reviews.
 
-Users can search for a Chicago restaurant by zipcode and name and receieve a list of matching restaurant results. When a user clicks on a result, they are redirected to a page to view further information about the restaurant and inspection. If the user is content with the restaurant's inspection details, they can click the restaurant's pin on the map or the directions button to pull up google map directions from their current location.
+Users can search for a Chicago restaurant by zip code and name and receive a list of matching restaurant results. When a user clicks on a result, they are redirected to a page to view further information about the restaurant and inspection. If the user is content with the restaurant's inspection details, they can click the restaurant's pin on the map or the directions button to pull up google map directions from their current location.
 
 This application was created using a mobile-first design, but has a responsive layout that supports larger screens.
 
@@ -20,8 +20,10 @@ This application was created using a mobile-first design, but has a responsive l
 
 ---
 
-## Preview of App:
+## Mobile View Preview of App:
 
+- ![Clean_Cuisine_-_5_March_2023__4__AdobeExpress](https://user-images.githubusercontent.com/109977562/222997956-be3b5258-e60b-4a1f-90c6-03377499403d.gif)
+- ![Clean_Cuisine_-_5_March_2023__1__AdobeExpress](https://user-images.githubusercontent.com/109977562/222997493-b0275222-3185-4a9f-8c39-01a5de57e76e.gif)
 
 ---
 
