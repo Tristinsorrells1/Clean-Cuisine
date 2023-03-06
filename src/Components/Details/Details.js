@@ -101,7 +101,7 @@ const Details = () => {
               )}
             </div>
           </div>
-        </div> 
+        </div>
         <div>
           <div className="violation-header">Violations</div>
           <div className="violation-details">
@@ -109,16 +109,20 @@ const Details = () => {
           </div>
         </div>
         <div className="yelp-header">Yelp Reviews</div>
-        {/* {restaurant && (
-          <div className="yelp-container">
-            <iframe
-              src={`https://www.yelp.com/search?find_desc=${restaurant.urlName}+&find_loc=Chicago%2C+IL+${restaurant.zip}`}
-              alt="Yelp iframe"
-              className="yelp-iframe"
-              title="yelp-iframe"
-            ></iframe>
-          </div>
-          )} */}
+        {restaurant && (
+          <button
+          className="yelp-button"
+            onClick={() =>
+              window.open(
+                `https://www.yelp.com/search?find_desc=${restaurant.urlName}+&find_loc=Chicago%2C+IL+${restaurant.zip}`,
+                "_blank",
+                "noreferrer"
+              )
+            }
+          >
+            Go to Yelp 
+          </button>
+        )}
       </section>
     </>
   );

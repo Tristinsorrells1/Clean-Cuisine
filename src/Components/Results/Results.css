@@ -25,9 +25,11 @@
 button,
 .filter-button {
   background-color: rgb(247, 111, 111);
-  border: 1px solid rgb(6, 19, 118);
+  border: 2px solid rgb(6, 19, 118);
   color: rgb(6, 19, 118);
   border-radius: 10px;
+  width: 15vw;
+  text-align: center;
 }
 
 button:active,
@@ -40,7 +42,6 @@ input {
 }
 
 @media only screen and (max-width: 345px) {
-
   .results-container {
     width: fit-content;
   }

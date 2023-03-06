@@ -102,10 +102,13 @@ li {
   height: 5vh;
   margin-right: auto;
   margin-left: auto;
-  background-color: rgb(244, 111, 111);
+  background-color: rgb(6, 19, 118);
+  color: rgb(223, 209, 209);
   font-size: 2.5vh;
   display: flex;
   align-items: center;
+  border: 1px solid rgb(247, 111, 111);
+  border-radius: 5px;
 }
 
 .inspection-details {
@@ -152,9 +155,29 @@ li {
   margin-top: -15vh;
 }
 
+.yelp-button {
+  width: 20vw;
+  margin-top: 1vh;
+  display: block;
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media only screen and (max-width: 590px) {
+  .name-and-address-container {
+    width: 35vw;
+  }
+}
+
 @media only screen and (max-width: 485px) {
   .inspection-details {
     flex-direction: column;
+  }
+
+  span,
+  .result {
+    margin-right: 2vw;
   }
 
   .check-icon,
@@ -167,12 +190,12 @@ li {
 
   .name-and-address-container {
     height: fit-content;
-    width: 50vw;
+    width: 60vw;
     font-size: 3vw;
   }
 
   .map {
-    width: 50vw;
+    width: 60vw;
   }
 
   .violation-comment {
@@ -195,6 +218,19 @@ li {
   }
 }
 
+@media only screen and (max-width: 380px) {
+  .inspection-results-header,
+    .violation-header,
+    .yelp-header {
+      height: 4vh;
+    }
+
+  button,
+  .yelp-button {
+    width: 30vw;
+  }
+}
+
 @media only screen and (max-width: 300px) {
   .check-icon,
   .fail-icon,
@@ -203,6 +239,12 @@ li {
     height: 3vh;
     width: 6vw;
     margin: .5vh;
+  }
+
+  .inspection-results-header,
+  .violation-header,
+  .yelp-header {
+    height: 3vh;
   }
 
   .violation-comment {
@@ -214,5 +256,13 @@ li {
   .risk-level,
   .result {
     font-size: 4vw;
+  }
+
+  header {
+    flex-direction: column;
+  }
+
+  h1 {
+    margin: 0;
   }
 }
