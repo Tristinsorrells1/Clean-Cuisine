@@ -47,7 +47,7 @@ const Details = () => {
             </button>
           </div>
           <div className="map">
-            <Maps restaurant={restaurant} />
+            {restaurant && <Maps restaurant={restaurant} />}
           </div>
         </div>
         <div>

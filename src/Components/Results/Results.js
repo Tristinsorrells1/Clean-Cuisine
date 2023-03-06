@@ -52,6 +52,6 @@ const Results = ({ filterResults, filterResultDisplay }) => {
 export default Results;
 
 Results.propTypes = {
-  filterResults: PropTypes.array,
+  filterResults: PropTypes.array.isRequired,
   filterResultDisplay: PropTypes.func.isRequired
 };

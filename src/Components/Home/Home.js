@@ -59,12 +59,10 @@ let findRestaurants = () => {
   getRestaurants(zipcode)
   .then((results) => {
     if (typeof results === "string") {
-      console.log("1")
       setError(results)
       setIsLoading(false)
     }
     else {
-      console.log("2");
       let searchResults = results.filter((data) => data["dba_name"].includes(name.toUpperCase()));
       setResultsInState(searchResults)
       setError("")

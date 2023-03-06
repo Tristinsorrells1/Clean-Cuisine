@@ -4,7 +4,7 @@ import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import PropTypes from "prop-types";
 
 const Maps = ({ restaurant }) => {
- 
+  
   const containerStyle = {
     width: "100%",
     height: "100%",
