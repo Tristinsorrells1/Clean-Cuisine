@@ -164,17 +164,31 @@ li {
   margin-left: auto;
 }
 
-@media only screen and (max-width: 590px) {
+@media only screen and (max-width: 620px) {
   .name-and-address-container {
     width: 35vw;
   }
-}
 
-@media only screen and (max-width: 485px) {
+  .date,
+  .risk-level,
+  .result {
+    margin: 1vw;
+  }
+
   .inspection-details {
     flex-direction: column;
   }
 
+  .check-icon,
+  .fail-icon,
+  .info-icon,
+  .warning-icon {
+    height: 3vh;
+    width: 3vw;
+  }
+}
+
+@media only screen and (max-width: 485px) {
   span,
   .result {
     margin-right: 2vw;
@@ -184,7 +198,6 @@ li {
   .fail-icon,
   .info-icon,
   .warning-icon {
-    height: 3vh;
     width: 5vw;
   }
 
@@ -213,7 +226,6 @@ li {
   .date,
   .risk-level,
   .result {
-    margin: 1vw;
     font-size: 3.5vw;
   }
 }
@@ -224,11 +236,6 @@ li {
     .yelp-header {
       height: 4vh;
     }
-
-  button,
-  .yelp-button {
-    width: 30vw;
-  }
 }
 
 @media only screen and (max-width: 300px) {
@@ -264,5 +271,10 @@ li {
 
   h1 {
     margin: 0;
+  }
+
+  .directions-button,
+  .back-button {
+    width: 10vw;
   }
 }

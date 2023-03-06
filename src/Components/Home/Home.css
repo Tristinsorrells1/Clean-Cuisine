@@ -43,7 +43,7 @@ input {
   button,
   .filter-button {
     width: 30vw;
-    min-width: 180px;
+    min-width: 130px;
   }
 }
 
