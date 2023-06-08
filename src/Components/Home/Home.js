@@ -4,6 +4,7 @@ import { getRestaurants } from "../../APICalls.js"
 import {cleanData, removeDuplicates } from "../../util"
 import Results from "../Results/Results"
 
+
 const Home = () => {
 
   const [zipcode, setZipcode] = useState("")
@@ -153,7 +154,7 @@ let filterResultDisplay = (value) => {
       )}
       {isLoading && (
         <img
-          src="/assets/Spinner.gif"
+          src="/Assets/Spinner.gif"
           alt="loading..."
           className="loading-spinner"
         /> 
